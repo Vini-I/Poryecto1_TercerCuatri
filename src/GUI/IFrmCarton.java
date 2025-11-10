@@ -26,30 +26,302 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Matriz = new javax.swing.JPanel();
+        N0 = new javax.swing.JLabel();
+        N1 = new javax.swing.JLabel();
+        N2 = new javax.swing.JLabel();
+        N3 = new javax.swing.JLabel();
+        N4 = new javax.swing.JLabel();
+        N5 = new javax.swing.JLabel();
+        N6 = new javax.swing.JLabel();
+        N7 = new javax.swing.JLabel();
+        N8 = new javax.swing.JLabel();
+        N9 = new javax.swing.JLabel();
+        N10 = new javax.swing.JLabel();
+        N11 = new javax.swing.JLabel();
+        N12 = new javax.swing.JLabel();
+        N13 = new javax.swing.JLabel();
+        N14 = new javax.swing.JLabel();
+        N15 = new javax.swing.JLabel();
+        N16 = new javax.swing.JLabel();
+        N17 = new javax.swing.JLabel();
+        N18 = new javax.swing.JLabel();
+        N19 = new javax.swing.JLabel();
+        N20 = new javax.swing.JLabel();
+        N21 = new javax.swing.JLabel();
+        N22 = new javax.swing.JLabel();
+        N23 = new javax.swing.JLabel();
+        N24 = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Carton.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        Matriz.setBackground(new java.awt.Color(242, 212, 147));
+        Matriz.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(188, 75, 42), 5));
+        Matriz.setLayout(new java.awt.GridLayout(5, 5));
+
+        N0.setBackground(new java.awt.Color(186, 74, 40));
+        N0.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N0.setForeground(new java.awt.Color(242, 213, 148));
+        N0.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N0.setText("75");
+        N0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N0.setOpaque(true);
+        Matriz.add(N0);
+
+        N1.setBackground(new java.awt.Color(242, 213, 148));
+        N1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N1.setForeground(new java.awt.Color(186, 74, 40));
+        N1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N1.setText("75");
+        N1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N1.setOpaque(true);
+        Matriz.add(N1);
+
+        N2.setBackground(new java.awt.Color(242, 213, 148));
+        N2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N2.setForeground(new java.awt.Color(186, 74, 40));
+        N2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N2.setText("75");
+        N2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N2.setOpaque(true);
+        Matriz.add(N2);
+
+        N3.setBackground(new java.awt.Color(242, 213, 148));
+        N3.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N3.setForeground(new java.awt.Color(186, 74, 40));
+        N3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N3.setText("75");
+        N3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N3.setOpaque(true);
+        Matriz.add(N3);
+
+        N4.setBackground(new java.awt.Color(242, 213, 148));
+        N4.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N4.setForeground(new java.awt.Color(186, 74, 40));
+        N4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N4.setText("75");
+        N4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N4.setOpaque(true);
+        Matriz.add(N4);
+
+        N5.setBackground(new java.awt.Color(242, 213, 148));
+        N5.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N5.setForeground(new java.awt.Color(186, 74, 40));
+        N5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N5.setText("75");
+        N5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N5.setOpaque(true);
+        Matriz.add(N5);
+
+        N6.setBackground(new java.awt.Color(242, 213, 148));
+        N6.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N6.setForeground(new java.awt.Color(186, 74, 40));
+        N6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N6.setText("75");
+        N6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N6.setOpaque(true);
+        Matriz.add(N6);
+
+        N7.setBackground(new java.awt.Color(242, 213, 148));
+        N7.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N7.setForeground(new java.awt.Color(186, 74, 40));
+        N7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N7.setText("75");
+        N7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N7.setOpaque(true);
+        Matriz.add(N7);
+
+        N8.setBackground(new java.awt.Color(242, 213, 148));
+        N8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N8.setForeground(new java.awt.Color(186, 74, 40));
+        N8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N8.setText("75");
+        N8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N8.setOpaque(true);
+        Matriz.add(N8);
+
+        N9.setBackground(new java.awt.Color(242, 213, 148));
+        N9.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N9.setForeground(new java.awt.Color(186, 74, 40));
+        N9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N9.setText("75");
+        N9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N9.setOpaque(true);
+        Matriz.add(N9);
+
+        N10.setBackground(new java.awt.Color(242, 213, 148));
+        N10.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N10.setForeground(new java.awt.Color(186, 74, 40));
+        N10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N10.setText("75");
+        N10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N10.setOpaque(true);
+        Matriz.add(N10);
+
+        N11.setBackground(new java.awt.Color(242, 213, 148));
+        N11.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N11.setForeground(new java.awt.Color(186, 74, 40));
+        N11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N11.setText("75");
+        N11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N11.setOpaque(true);
+        Matriz.add(N11);
+
+        N12.setBackground(new java.awt.Color(242, 213, 148));
+        N12.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N12.setForeground(new java.awt.Color(186, 74, 40));
+        N12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N12.setText("X");
+        N12.setToolTipText("");
+        N12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N12.setOpaque(true);
+        Matriz.add(N12);
+
+        N13.setBackground(new java.awt.Color(242, 213, 148));
+        N13.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N13.setForeground(new java.awt.Color(186, 74, 40));
+        N13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N13.setText("75");
+        N13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N13.setOpaque(true);
+        Matriz.add(N13);
+
+        N14.setBackground(new java.awt.Color(242, 213, 148));
+        N14.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N14.setForeground(new java.awt.Color(186, 74, 40));
+        N14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N14.setText("75");
+        N14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N14.setOpaque(true);
+        Matriz.add(N14);
+
+        N15.setBackground(new java.awt.Color(242, 213, 148));
+        N15.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N15.setForeground(new java.awt.Color(186, 74, 40));
+        N15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N15.setText("75");
+        N15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N15.setOpaque(true);
+        Matriz.add(N15);
+
+        N16.setBackground(new java.awt.Color(242, 213, 148));
+        N16.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N16.setForeground(new java.awt.Color(186, 74, 40));
+        N16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N16.setText("75");
+        N16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N16.setOpaque(true);
+        Matriz.add(N16);
+
+        N17.setBackground(new java.awt.Color(242, 213, 148));
+        N17.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N17.setForeground(new java.awt.Color(186, 74, 40));
+        N17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N17.setText("75");
+        N17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N17.setOpaque(true);
+        Matriz.add(N17);
+
+        N18.setBackground(new java.awt.Color(242, 213, 148));
+        N18.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N18.setForeground(new java.awt.Color(186, 74, 40));
+        N18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N18.setText("75");
+        N18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N18.setOpaque(true);
+        Matriz.add(N18);
+
+        N19.setBackground(new java.awt.Color(242, 213, 148));
+        N19.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N19.setForeground(new java.awt.Color(186, 74, 40));
+        N19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N19.setText("75");
+        N19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N19.setOpaque(true);
+        Matriz.add(N19);
+
+        N20.setBackground(new java.awt.Color(242, 213, 148));
+        N20.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N20.setForeground(new java.awt.Color(186, 74, 40));
+        N20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N20.setText("75");
+        N20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N20.setOpaque(true);
+        Matriz.add(N20);
+
+        N21.setBackground(new java.awt.Color(242, 213, 148));
+        N21.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N21.setForeground(new java.awt.Color(186, 74, 40));
+        N21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N21.setText("75");
+        N21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N21.setOpaque(true);
+        Matriz.add(N21);
+
+        N22.setBackground(new java.awt.Color(242, 213, 148));
+        N22.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N22.setForeground(new java.awt.Color(186, 74, 40));
+        N22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N22.setText("75");
+        N22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N22.setOpaque(true);
+        Matriz.add(N22);
+
+        N23.setBackground(new java.awt.Color(242, 213, 148));
+        N23.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N23.setForeground(new java.awt.Color(186, 74, 40));
+        N23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N23.setText("75");
+        N23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N23.setOpaque(true);
+        Matriz.add(N23);
+
+        N24.setBackground(new java.awt.Color(242, 213, 148));
+        N24.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        N24.setForeground(new java.awt.Color(186, 74, 40));
+        N24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        N24.setText("75");
+        N24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(187, 73, 41), 5));
+        N24.setOpaque(true);
+        Matriz.add(N24);
+
+        getContentPane().add(Matriz, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 520, 400));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Carton.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JPanel Matriz;
+    private javax.swing.JLabel N0;
+    private javax.swing.JLabel N1;
+    private javax.swing.JLabel N10;
+    private javax.swing.JLabel N11;
+    private javax.swing.JLabel N12;
+    private javax.swing.JLabel N13;
+    private javax.swing.JLabel N14;
+    private javax.swing.JLabel N15;
+    private javax.swing.JLabel N16;
+    private javax.swing.JLabel N17;
+    private javax.swing.JLabel N18;
+    private javax.swing.JLabel N19;
+    private javax.swing.JLabel N2;
+    private javax.swing.JLabel N20;
+    private javax.swing.JLabel N21;
+    private javax.swing.JLabel N22;
+    private javax.swing.JLabel N23;
+    private javax.swing.JLabel N24;
+    private javax.swing.JLabel N3;
+    private javax.swing.JLabel N4;
+    private javax.swing.JLabel N5;
+    private javax.swing.JLabel N6;
+    private javax.swing.JLabel N7;
+    private javax.swing.JLabel N8;
+    private javax.swing.JLabel N9;
     // End of variables declaration//GEN-END:variables
 }
