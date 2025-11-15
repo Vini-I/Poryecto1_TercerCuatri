@@ -26,23 +26,41 @@ public class IFrmTombolaAuto extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lblPrincipal = new javax.swing.JLabel();
+        lblSecundario = new javax.swing.JLabel();
+        Fondo = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaAuto.png"))); // NOI18N
+        lblPrincipal.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        lblPrincipal.setForeground(new java.awt.Color(2, 76, 117));
+        lblPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrincipal.setText("20");
+
+        lblSecundario.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        lblSecundario.setForeground(new java.awt.Color(2, 76, 117));
+        lblSecundario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSecundario.setText("31");
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaAuto.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Fondo)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(90, 90, 90)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(210, 210, 210)
+                .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(lblSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(Fondo)
         );
 
         pack();
@@ -50,6 +68,8 @@ public class IFrmTombolaAuto extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JLabel lblPrincipal;
+    private javax.swing.JLabel lblSecundario;
     // End of variables declaration//GEN-END:variables
 }

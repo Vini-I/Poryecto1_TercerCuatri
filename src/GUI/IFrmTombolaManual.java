@@ -26,23 +26,60 @@ public class IFrmTombolaManual extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        txtPrincipal = new javax.swing.JTextField();
+        lblSecundario = new javax.swing.JLabel();
+        btnIngresar = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaManual.png"))); // NOI18N
+        setPreferredSize(new java.awt.Dimension(540, 540));
+
+        txtPrincipal.setBackground(new java.awt.Color(229, 207, 163));
+        txtPrincipal.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        txtPrincipal.setForeground(new java.awt.Color(21, 84, 108));
+        txtPrincipal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPrincipal.setText("20");
+        txtPrincipal.setBorder(null);
+
+        lblSecundario.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        lblSecundario.setForeground(new java.awt.Color(21, 85, 124));
+        lblSecundario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSecundario.setText("31");
+
+        btnIngresar.setBackground(new java.awt.Color(21, 86, 126));
+        btnIngresar.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnIngresar.setForeground(new java.awt.Color(226, 201, 151));
+        btnIngresar.setText("Ingresar");
+        btnIngresar.setBorder(null);
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaManual.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(100, 100, 100)
+                .addComponent(lblSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(txtPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(Fondo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(300, 300, 300)
+                .addComponent(lblSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(txtPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(400, 400, 400)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(Fondo)
         );
 
         pack();
@@ -50,6 +87,9 @@ public class IFrmTombolaManual extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnIngresar;
+    private javax.swing.JLabel lblSecundario;
+    private javax.swing.JTextField txtPrincipal;
     // End of variables declaration//GEN-END:variables
 }
