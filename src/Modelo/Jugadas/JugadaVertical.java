@@ -4,13 +4,17 @@
  */
 package Modelo.Jugadas;
 
+import Modelo.Carton;
+
 /**
  *
  * @author autoa
  */
-public class JugadaVertical implements Winable{
+public class JugadaVertical implements Winable {
+
     @Override
-    public boolean verificarJugada(boolean[][] marcados) {
+    public boolean verificarJugada(Carton carton) {
+        boolean[][] marcados = carton.getMarcados();
         for (int j = 0; j < 5; j++) {
             boolean columnaCompleta = true;
             for (int i = 0; i < 5; i++) {
@@ -19,7 +23,9 @@ public class JugadaVertical implements Winable{
                     break;
                 }
             }
-            if (columnaCompleta) return true;
+            if (columnaCompleta) {
+                return true;
+            }
         }
         return false;
     }

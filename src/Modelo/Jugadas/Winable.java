@@ -4,10 +4,12 @@
  */
 package Modelo.Jugadas;
 
+import Modelo.Carton;
+
 /**
  *
  * @author autoa
  */
 public interface Winable {
-    public boolean verificarJugada(boolean[][] marcados);
+    public boolean verificarJugada(Carton carton);
 }

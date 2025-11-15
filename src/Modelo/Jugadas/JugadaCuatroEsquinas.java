@@ -4,14 +4,18 @@
  */
 package Modelo.Jugadas;
 
+import Modelo.Carton;
+
 /**
  *
  * @author autoa
  */
-public class JugadaCuatroEsquinas implements Winable{
+public class JugadaCuatroEsquinas implements Winable {
+
     @Override
-    public boolean verificarJugada(boolean[][] marcados) {
-        return marcados[0][0] && marcados[0][4] &&
-               marcados[4][0] && marcados[4][4];
+    public boolean verificarJugada(Carton carton) {
+        boolean[][] marcados = carton.getMarcados();
+        return marcados[0][0] && marcados[0][4]
+                && marcados[4][0] && marcados[4][4];
     }
 }

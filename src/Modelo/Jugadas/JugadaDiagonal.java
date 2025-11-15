@@ -4,19 +4,27 @@
  */
 package Modelo.Jugadas;
 
+import Modelo.Carton;
+
 /**
  *
  * @author autoa
  */
-public class JugadaDiagonal implements Winable{
+public class JugadaDiagonal implements Winable {
+
     @Override
-    public boolean verificarJugada(boolean[][] marcados) {
+    public boolean verificarJugada(Carton carton) {
+        boolean[][] marcados = carton.getMarcados();
         boolean diagonal1 = true;
         boolean diagonal2 = true;
 
         for (int i = 0; i < 5; i++) {
-            if (!marcados[i][i]) diagonal1 = false;
-            if (!marcados[i][4 - i]) diagonal2 = false;
+            if (!marcados[i][i]) {
+                diagonal1 = false;
+            }
+            if (!marcados[i][4 - i]) {
+                diagonal2 = false;
+            }
         }
 
         return diagonal1 || diagonal2;

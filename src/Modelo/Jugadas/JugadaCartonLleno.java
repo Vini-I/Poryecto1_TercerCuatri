@@ -4,16 +4,21 @@
  */
 package Modelo.Jugadas;
 
+import Modelo.Carton;
+
 /**
  *
  * @author autoa
  */
 public class JugadaCartonLleno implements Winable{
     @Override
-    public boolean verificarJugada(boolean[][] marcados) {
+    public boolean verificarJugada(Carton carton) {
+        boolean[][] marcados = carton.getMarcados();
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                if (!marcados[i][j]) return false;
+                if (!marcados[i][j]) {
+                    return false;
+                }
             }
         }
         return true;
