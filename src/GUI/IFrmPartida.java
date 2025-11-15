@@ -26,30 +26,45 @@ public class IFrmPartida extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnCartonLleno = new javax.swing.JButton();
+        btnCuatroEsquinas = new javax.swing.JButton();
+        btnNormal = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Partida.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        btnCartonLleno.setBackground(new java.awt.Color(237, 211, 154));
+        btnCartonLleno.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        btnCartonLleno.setForeground(new java.awt.Color(33, 100, 136));
+        btnCartonLleno.setText("Carton Lleno");
+        btnCartonLleno.setBorder(null);
+        getContentPane().add(btnCartonLleno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 290, 60));
+
+        btnCuatroEsquinas.setBackground(new java.awt.Color(237, 211, 154));
+        btnCuatroEsquinas.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        btnCuatroEsquinas.setForeground(new java.awt.Color(33, 100, 136));
+        btnCuatroEsquinas.setText("Cuatro Esquinas");
+        btnCuatroEsquinas.setBorder(null);
+        getContentPane().add(btnCuatroEsquinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 290, 60));
+
+        btnNormal.setBackground(new java.awt.Color(237, 211, 154));
+        btnNormal.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        btnNormal.setForeground(new java.awt.Color(33, 100, 136));
+        btnNormal.setText("Normal");
+        btnNormal.setBorder(null);
+        getContentPane().add(btnNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 290, 60));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Partida.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnCartonLleno;
+    private javax.swing.JButton btnCuatroEsquinas;
+    private javax.swing.JButton btnNormal;
     // End of variables declaration//GEN-END:variables
 }

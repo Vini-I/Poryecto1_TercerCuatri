@@ -26,30 +26,36 @@ public class IFrmModo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        btnManual = new javax.swing.JButton();
+        btnAutomatico = new javax.swing.JButton();
+        Fondo = new javax.swing.JLabel();
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu.png"))); // NOI18N
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        btnManual.setBackground(new java.awt.Color(240, 215, 167));
+        btnManual.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnManual.setForeground(new java.awt.Color(32, 101, 137));
+        btnManual.setText("Manual");
+        btnManual.setBorder(null);
+        getContentPane().add(btnManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 320, 50));
+
+        btnAutomatico.setBackground(new java.awt.Color(240, 215, 167));
+        btnAutomatico.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnAutomatico.setForeground(new java.awt.Color(32, 101, 137));
+        btnAutomatico.setText("Automatico");
+        btnAutomatico.setBorder(null);
+        getContentPane().add(btnAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 320, 50));
+
+        Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu.png"))); // NOI18N
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnAutomatico;
+    private javax.swing.JButton btnManual;
     // End of variables declaration//GEN-END:variables
 }
