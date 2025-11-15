@@ -18,8 +18,16 @@ import java.util.ArrayList;
 public class ListaCartones implements IListaCartones {
     
      private ArrayList<Carton> cartones;
+     private static ListaCartones instancia;
+     
+     public static ListaCartones getInstancia(){
+         if (instancia == null){
+             instancia = new ListaCartones();
+         }
+         return instancia;
+     }
     
-    public ListaCartones() {
+    private ListaCartones() {
         this.cartones = new ArrayList<>();
     }
 

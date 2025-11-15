@@ -17,7 +17,7 @@ import java.util.Objects;
  * @author rodol
  */
 public class Carton {
-    
+
     private String id;
     private int[][] numeros;
     private boolean[][] marcados;
@@ -43,11 +43,11 @@ public class Carton {
     public boolean[][] getMarcados() {
         return marcados;
     }
-    
-    public boolean marcarNumero(int numero){
+
+    public boolean marcarNumero(int numero) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
-                if(numeros[i][j] == numero){
+                if (numeros[i][j] == numero) {
                     marcados[i][j] = true;
                     return true;
                 }
@@ -55,8 +55,8 @@ public class Carton {
         }
         return false;
     }
-    
-      public boolean desmarcarNumero(int numero) {
+
+    public boolean desmarcarNumero(int numero) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (numeros[i][j] == numero && !(i == 2 && j == 2)) {
@@ -85,6 +85,8 @@ public class Carton {
         }
         return false;
     }
+
+    public int getNumero(int fila, int columna) {
+        return numeros[fila][columna];
+    }
 }
-
-
