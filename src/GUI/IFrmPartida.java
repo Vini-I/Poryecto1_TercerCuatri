@@ -4,16 +4,24 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+import Modelo.Jugadas.ModoJuego;
+
 /**
  *
  * @author llean
  */
 public class IFrmPartida extends javax.swing.JInternalFrame {
 
+    private ControladorPrincipal controlador;
+    private FrmDesktopPane desktop;
+
     /**
      * Creates new form IFrmPartida
      */
-    public IFrmPartida() {
+    public IFrmPartida(ControladorPrincipal controlador, FrmDesktopPane desktop) {
+        this.controlador = controlador;
+        this.desktop = desktop;
         initComponents();
     }
 
@@ -38,6 +46,11 @@ public class IFrmPartida extends javax.swing.JInternalFrame {
         btnCartonLleno.setForeground(new java.awt.Color(33, 100, 136));
         btnCartonLleno.setText("Carton Lleno");
         btnCartonLleno.setBorder(null);
+        btnCartonLleno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCartonLlenoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCartonLleno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 510, 290, 60));
 
         btnCuatroEsquinas.setBackground(new java.awt.Color(237, 211, 154));
@@ -45,6 +58,11 @@ public class IFrmPartida extends javax.swing.JInternalFrame {
         btnCuatroEsquinas.setForeground(new java.awt.Color(33, 100, 136));
         btnCuatroEsquinas.setText("Cuatro Esquinas");
         btnCuatroEsquinas.setBorder(null);
+        btnCuatroEsquinas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCuatroEsquinasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCuatroEsquinas, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 290, 60));
 
         btnNormal.setBackground(new java.awt.Color(237, 211, 154));
@@ -52,6 +70,11 @@ public class IFrmPartida extends javax.swing.JInternalFrame {
         btnNormal.setForeground(new java.awt.Color(33, 100, 136));
         btnNormal.setText("Normal");
         btnNormal.setBorder(null);
+        btnNormal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNormalActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnNormal, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 290, 60));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Partida.png"))); // NOI18N
@@ -60,6 +83,29 @@ public class IFrmPartida extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnNormalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNormalActionPerformed
+        controlador.cambiarTipoPartida(ModoJuego.NORMAL);
+        cerrarYcontinuarFrame();
+    }//GEN-LAST:event_btnNormalActionPerformed
+
+    private void btnCuatroEsquinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCuatroEsquinasActionPerformed
+        controlador.cambiarTipoPartida(ModoJuego.CUATRO_ESQUINAS);
+        cerrarYcontinuarFrame();
+
+    }//GEN-LAST:event_btnCuatroEsquinasActionPerformed
+
+    private void btnCartonLlenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartonLlenoActionPerformed
+        controlador.cambiarTipoPartida(ModoJuego.CARTON_LLENO);
+        cerrarYcontinuarFrame();
+
+    }//GEN-LAST:event_btnCartonLlenoActionPerformed
+
+    private void cerrarYcontinuarFrame(){
+        this.setVisible(false);
+        this.dispose();
+        
+        desktop.abrirFrameCartonBuilder();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;

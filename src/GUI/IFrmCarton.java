@@ -4,18 +4,145 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+import Modelo.Carton;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+
 /**
  *
  * @author llean
  */
 public class IFrmCarton extends javax.swing.JInternalFrame {
-
+    private Carton carton;
+    private ControladorPrincipal controlador;
+    private JLabel[][] labels;
     /**
      * Creates new form IFrmCarton
      */
-    public IFrmCarton() {
+    public IFrmCarton(Carton carton, ControladorPrincipal controlador) {
+        this.carton = carton;
+        this.controlador = controlador;
+        this.labels = new JLabel[5][5];
         initComponents();
+        llenarMatriz();
+        configurarCerrar();
     }
+
+     private void llenarMatriz() {
+        Matriz.removeAll();
+        Matriz.setBackground(new Color(32, 101, 137));
+        
+        int[][] numeros = getCarton().getNumeros();
+        boolean[][] marcados = getCarton().getMarcados();
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                JLabel label = crearLabel(i, j, numeros[i][j], marcados[i][j]);
+                labels[i][j] = label;
+                Matriz.add(label);
+            }
+        }
+
+        Matriz.revalidate();
+        Matriz.repaint();
+    }
+    
+    private JLabel crearLabel(int fila, int col, int numero, boolean marcado) {
+        JLabel label = new JLabel();
+        label.setOpaque(true);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setBorder(BorderFactory.createLineBorder(new Color(185, 72, 40), 3));
+
+        if (fila == 2 && col == 2) {
+            label.setText("FREE");
+            label.setFont(new Font("Arial", Font.BOLD, 18));
+            label.setBackground(new Color(46, 125, 50));
+            label.setForeground(Color.WHITE);
+        } else {
+            label.setText(String.valueOf(numero));
+            label.setFont(new Font("Arial", Font.BOLD, 24));
+            
+            if (marcado) {
+                label.setBackground(new Color(255, 193, 7));
+            } else {
+                label.setBackground(new Color(240, 210, 145));
+            }
+            label.setForeground(new Color(183, 71, 38));
+        }
+        
+        return label;
+    }
+    
+    public void actualizarMatriz() {
+        boolean[][] marcados = getCarton().getMarcados();
+        
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                JLabel label = labels[i][j];
+                
+                if (i == 2 && j == 2) {
+                    continue;
+                }
+
+                if (marcados[i][j]) {
+                    label.setBackground(new Color(255, 193, 7));
+                } else {
+                    label.setBackground(new Color(240, 210, 145));
+                }
+            }
+        }
+        
+        Matriz.repaint();
+    }
+    
+    public void marcarNumero(int numero) {
+        getCarton().marcarNumero(numero);
+        
+        actualizarMatriz();
+    }
+    
+    public Carton getCarton(){
+        return this.carton;
+    }
+
+    private void configurarCerrar() {
+        this.addInternalFrameListener(new InternalFrameAdapter() {
+            @Override
+            public void internalFrameClosing(InternalFrameEvent e) {
+                cerrar();
+            }
+        });
+    }
+    
+
+    public void cerrar() {
+        int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
+                "¿Desea eliminar el cartón " + carton.getId() + "?",
+                "Eliminar Cartón",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == javax.swing.JOptionPane.YES_OPTION) {
+            controlador.getControladorCartones().eliminarCarton(carton.getId());
+            System.out.println(controlador.getGestorJuego().getCantidadCartones());
+            this.dispose();
+        }
+        System.out.println(controlador.getGestorJuego().getCantidadCartones());
+    }
+
+
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,6 +156,8 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
         Matriz = new javax.swing.JPanel();
         Fondo = new javax.swing.JLabel();
 
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Matriz.setBackground(new java.awt.Color(242, 212, 147));

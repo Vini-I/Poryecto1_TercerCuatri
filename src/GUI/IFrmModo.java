@@ -4,16 +4,27 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+import GUI.UtilGUI.UtilsGUI;
+import Modelo.Carton;
+import Modelo.Jugadas.ModoJuego;
+import Modelo.ModoEntrada;
+
 /**
  *
  * @author llean
  */
-public class IFrmModo extends javax.swing.JInternalFrame {
-
+public class IFrmModo extends javax.swing.JInternalFrame  {
+    private ControladorPrincipal controlador;
+    private FrmDesktopPane desktop;
     /**
      * Creates new form IFrmModo
+     * @param controlador
      */
-    public IFrmModo() {
+    
+    public IFrmModo(ControladorPrincipal controlador, FrmDesktopPane desktop) {
+        this.controlador = controlador;
+        this.desktop = desktop;
         initComponents();
     }
 
@@ -37,6 +48,11 @@ public class IFrmModo extends javax.swing.JInternalFrame {
         btnManual.setForeground(new java.awt.Color(32, 101, 137));
         btnManual.setText("Manual");
         btnManual.setBorder(null);
+        btnManual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManualActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnManual, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 320, 50));
 
         btnAutomatico.setBackground(new java.awt.Color(240, 215, 167));
@@ -44,6 +60,11 @@ public class IFrmModo extends javax.swing.JInternalFrame {
         btnAutomatico.setForeground(new java.awt.Color(32, 101, 137));
         btnAutomatico.setText("Automatico");
         btnAutomatico.setBorder(null);
+        btnAutomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAutomaticoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnAutomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 320, 50));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Menu.png"))); // NOI18N
@@ -52,10 +73,27 @@ public class IFrmModo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManualActionPerformed
+        controlador.cambiarModoEntrada(ModoEntrada.MANUAL);
+        cerrarYcontinuarFrame();
+    }//GEN-LAST:event_btnManualActionPerformed
+
+    private void btnAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutomaticoActionPerformed
+        controlador.cambiarModoEntrada(ModoEntrada.AUTOMATICO);
+        cerrarYcontinuarFrame();
+    }//GEN-LAST:event_btnAutomaticoActionPerformed
+
+    private void cerrarYcontinuarFrame(){
+        this.setVisible(false);
+        this.dispose();
+        desktop.abrirFramePartida();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JButton btnAutomatico;
     private javax.swing.JButton btnManual;
     // End of variables declaration//GEN-END:variables
+
+ 
 }

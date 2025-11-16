@@ -4,17 +4,27 @@
  */
 package GUI;
 
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author llean
  */
 public class IFrmTablero extends javax.swing.JInternalFrame {
 
+    private JLabel[] labels;
+
     /**
      * Creates new form IFrmTablero
      */
     public IFrmTablero() {
         initComponents();
+        this.labels = new JLabel[76];
+        inicializarTablero();
     }
 
     /**
@@ -47,6 +57,44 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void inicializarTablero() {
+        Matriz.removeAll();
+        
+        for (int i = 1; i <= 75; i++) {
+            JLabel label = new JLabel(String.valueOf(i), SwingConstants.CENTER);
+            label.setFont(new Font("Arial", Font.PLAIN, 36));
+            label.setForeground(new Color(220, 197, 156));
+            label.setOpaque(true);
+            label.setBackground(new Color(11, 88, 132));
+            label.setBorder(BorderFactory.createLineBorder(new Color(214, 204, 179), 3));
+            
+            labels[i] = label;
+            Matriz.add(label);
+        }
+        
+        Matriz.revalidate();
+        Matriz.repaint();
+    }
+    
+    public void marcarNumero(int numero) {
+        if (numero >= 1 && numero <= 75) {
+            JLabel label = labels[numero];
+            label.setBackground(new Color(220, 197, 157));
+            label.setForeground(new Color(11,88,132));
+            label.setFont(new Font("Arial", Font.PLAIN, 36));
+        }
+    }
+    
+     public void reiniciar() {
+        for (int i = 1; i <= 75; i++) {
+            labels[i].setBackground(new Color(11, 88, 132));
+            labels[i].setForeground(new Color(220,197, 156));
+            labels[i].setFont(new Font("Arial", Font.PLAIN, 36));
+        }
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Matriz;

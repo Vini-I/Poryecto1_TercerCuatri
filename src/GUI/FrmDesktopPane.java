@@ -4,18 +4,101 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+import Modelo.Carton;
+import javax.swing.JFrame;
+
 /**
  *
  * @author llean
  */
 public class FrmDesktopPane extends javax.swing.JFrame {
-
+    private ControladorPrincipal controlador;
+    private VistaAdapter vistaAdaptador;
     /**
      * Creates new form FrmDesktopPane
      */
     public FrmDesktopPane() {
         initComponents();
+        vistaAdaptador = new VistaAdapter(this);
+        controlador = new ControladorPrincipal(vistaAdaptador);
+        abrirFrameModo();
+
+      setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+
     }
+    
+    public void abrirFrameModo(){
+        IFrmModo modoFrm = new IFrmModo(controlador,this);
+        jDesktopPane1.add(modoFrm);
+        modoFrm.setVisible(true);
+        centrarFrame(modoFrm);
+    }
+    
+     public void abrirFramePartida(){
+        IFrmPartida partidaFrm = new IFrmPartida(controlador,this);
+        jDesktopPane1.add(partidaFrm);
+        partidaFrm.setVisible(true);
+        centrarFrame(partidaFrm);
+    }
+     
+    public void abrirFrameCartonBuilder() {
+        IFrmCartonBuilder builderFrm = new IFrmCartonBuilder(controlador, this);
+        jDesktopPane1.add(builderFrm);
+        builderFrm.setVisible(true);
+        centrarFrame(builderFrm);
+    }
+    
+    public void abrirFrameCartonManual() {
+        IFrmCartonManual manualFrm = new IFrmCartonManual(controlador,this);
+        jDesktopPane1.add(manualFrm);
+        manualFrm.setVisible(true);
+        centrarFrame(manualFrm);
+        vistaAdaptador.setFrameCartonManualActual(manualFrm);
+    }
+    
+     private void centrarFrame(javax.swing.JInternalFrame frame) {
+        int x = (jDesktopPane1.getWidth() - frame.getWidth()) / 2;
+        int y = (jDesktopPane1.getHeight() - frame.getHeight()) / 2;
+        frame.setLocation(x, y);
+    }
+ 
+    public void agregarFrameCarton(Carton carton) {
+        
+        IFrmCarton frameCarton = new IFrmCarton(carton, controlador);
+        jDesktopPane1.add(frameCarton);
+        frameCarton.setVisible(true);
+
+        posicionarEnCascada(frameCarton);
+    }
+
+    public void eliminarFrameCarton(String id) {
+        for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+            if (frame instanceof IFrmCarton) {
+                IFrmCarton frameCarton = (IFrmCarton) frame;
+                if (frameCarton.getCarton().getId().equals(id)) {
+                    frame.dispose();
+                    break;
+                }
+            }
+        }
+}
+
+    private int offsetX = 0;
+    private int offsetY = 0;
+
+    private void posicionarEnCascada(javax.swing.JInternalFrame frame) {
+        frame.setLocation(offsetX, offsetY);
+        offsetX += 30;
+        offsetY += 30;
+
+        if (offsetX > 400 || offsetY > 400) {
+            offsetX = 0;
+            offsetY = 0;
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +113,6 @@ public class FrmDesktopPane extends javax.swing.JFrame {
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
         jDesktopPane1.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
@@ -108,4 +190,6 @@ public class FrmDesktopPane extends javax.swing.JFrame {
     private javax.swing.JLabel Fondo;
     private javax.swing.JDesktopPane jDesktopPane1;
     // End of variables declaration//GEN-END:variables
+
+  
 }

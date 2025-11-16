@@ -4,18 +4,31 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+import GUI.FrmDesktopPane;
+import javax.swing.JOptionPane;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
+
 /**
  *
  * @author llean
  */
+
 public class IFrmCartonManual extends javax.swing.JInternalFrame {
 
+    private ControladorPrincipal controlador;
+    private FrmDesktopPane desktop;
     /**
      * Creates new form IFrmCaronManual
      */
-    public IFrmCartonManual() {
+    public IFrmCartonManual(ControladorPrincipal controlador, FrmDesktopPane desktop) {
+        this.controlador = controlador;
+        this.desktop = desktop;
         initComponents();
+        configurarCerrar();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,7 +52,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt10 = new javax.swing.JTextField();
         txt11 = new javax.swing.JTextField();
         txt12 = new javax.swing.JTextField();
-        btnSubir = new javax.swing.JButton();
+        txt13 = new javax.swing.JTextField();
         txt14 = new javax.swing.JTextField();
         txt15 = new javax.swing.JTextField();
         txt16 = new javax.swing.JTextField();
@@ -52,8 +65,11 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt23 = new javax.swing.JTextField();
         txt24 = new javax.swing.JTextField();
         txt25 = new javax.swing.JTextField();
+        btnSubir = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
 
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Matriz.setBackground(new java.awt.Color(240, 210, 145));
@@ -64,7 +80,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt1.setForeground(new java.awt.Color(183, 71, 38));
         txt1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt1.setText("75");
+        txt1.setText("2");
         txt1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt1.setOpaque(true);
         Matriz.add(txt1);
@@ -73,7 +89,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt2.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt2.setForeground(new java.awt.Color(183, 71, 38));
         txt2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt2.setText("1");
+        txt2.setText("16");
         txt2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt2.setOpaque(true);
         Matriz.add(txt2);
@@ -82,7 +98,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt3.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt3.setForeground(new java.awt.Color(183, 71, 38));
         txt3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt3.setText("1");
+        txt3.setText("33");
         txt3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt3.setOpaque(true);
         Matriz.add(txt3);
@@ -91,7 +107,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt4.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt4.setForeground(new java.awt.Color(183, 71, 38));
         txt4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt4.setText("1");
+        txt4.setText("47");
         txt4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt4.setOpaque(true);
         Matriz.add(txt4);
@@ -100,7 +116,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt5.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt5.setForeground(new java.awt.Color(183, 71, 38));
         txt5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt5.setText("1");
+        txt5.setText("63");
         txt5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt5.setOpaque(true);
         Matriz.add(txt5);
@@ -109,7 +125,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt6.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt6.setForeground(new java.awt.Color(183, 71, 38));
         txt6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt6.setText("1");
+        txt6.setText("4");
         txt6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt6.setOpaque(true);
         Matriz.add(txt6);
@@ -118,7 +134,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt7.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt7.setForeground(new java.awt.Color(183, 71, 38));
         txt7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt7.setText("1");
+        txt7.setText("17");
         txt7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt7.setOpaque(true);
         Matriz.add(txt7);
@@ -127,7 +143,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt8.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt8.setForeground(new java.awt.Color(183, 71, 38));
         txt8.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt8.setText("1");
+        txt8.setText("34");
         txt8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt8.setOpaque(true);
         Matriz.add(txt8);
@@ -136,7 +152,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt9.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt9.setForeground(new java.awt.Color(183, 71, 38));
         txt9.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt9.setText("1");
+        txt9.setText("48");
         txt9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt9.setOpaque(true);
         Matriz.add(txt9);
@@ -145,7 +161,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt10.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt10.setForeground(new java.awt.Color(183, 71, 38));
         txt10.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt10.setText("1");
+        txt10.setText("64");
         txt10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt10.setOpaque(true);
         Matriz.add(txt10);
@@ -154,7 +170,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt11.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt11.setForeground(new java.awt.Color(183, 71, 38));
         txt11.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt11.setText("1");
+        txt11.setText("6");
         txt11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt11.setOpaque(true);
         Matriz.add(txt11);
@@ -163,24 +179,25 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt12.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt12.setForeground(new java.awt.Color(183, 71, 38));
         txt12.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt12.setText("1");
+        txt12.setText("18");
         txt12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt12.setOpaque(true);
         Matriz.add(txt12);
 
-        btnSubir.setBackground(new java.awt.Color(184, 72, 39));
-        btnSubir.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        btnSubir.setForeground(new java.awt.Color(240, 210, 145));
-        btnSubir.setText("Subir");
-        btnSubir.setBorder(null);
-        btnSubir.setOpaque(true);
-        Matriz.add(btnSubir);
+        txt13.setBackground(new java.awt.Color(240, 210, 145));
+        txt13.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        txt13.setForeground(new java.awt.Color(183, 71, 38));
+        txt13.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txt13.setText("35");
+        txt13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
+        txt13.setOpaque(true);
+        Matriz.add(txt13);
 
         txt14.setBackground(new java.awt.Color(240, 210, 145));
         txt14.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt14.setForeground(new java.awt.Color(183, 71, 38));
         txt14.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt14.setText("1");
+        txt14.setText("49");
         txt14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt14.setOpaque(true);
         Matriz.add(txt14);
@@ -189,7 +206,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt15.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt15.setForeground(new java.awt.Color(183, 71, 38));
         txt15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt15.setText("1");
+        txt15.setText("65");
         txt15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt15.setOpaque(true);
         Matriz.add(txt15);
@@ -198,7 +215,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt16.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt16.setForeground(new java.awt.Color(183, 71, 38));
         txt16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt16.setText("1");
+        txt16.setText("8");
         txt16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt16.setOpaque(true);
         Matriz.add(txt16);
@@ -207,7 +224,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt17.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt17.setForeground(new java.awt.Color(183, 71, 38));
         txt17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt17.setText("1");
+        txt17.setText("19");
         txt17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt17.setOpaque(true);
         Matriz.add(txt17);
@@ -216,7 +233,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt18.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt18.setForeground(new java.awt.Color(183, 71, 38));
         txt18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt18.setText("1");
+        txt18.setText("36");
         txt18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt18.setOpaque(true);
         Matriz.add(txt18);
@@ -225,7 +242,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt19.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt19.setForeground(new java.awt.Color(183, 71, 38));
         txt19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt19.setText("1");
+        txt19.setText("50");
         txt19.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt19.setOpaque(true);
         Matriz.add(txt19);
@@ -234,7 +251,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt20.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt20.setForeground(new java.awt.Color(183, 71, 38));
         txt20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt20.setText("1");
+        txt20.setText("72");
         txt20.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt20.setOpaque(true);
         Matriz.add(txt20);
@@ -243,7 +260,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt21.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt21.setForeground(new java.awt.Color(183, 71, 38));
         txt21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt21.setText("1");
+        txt21.setText("9");
         txt21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt21.setOpaque(true);
         Matriz.add(txt21);
@@ -252,7 +269,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt22.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt22.setForeground(new java.awt.Color(183, 71, 38));
         txt22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt22.setText("1");
+        txt22.setText("20");
         txt22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt22.setOpaque(true);
         Matriz.add(txt22);
@@ -261,7 +278,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt23.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt23.setForeground(new java.awt.Color(183, 71, 38));
         txt23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt23.setText("1");
+        txt23.setText("37");
         txt23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt23.setOpaque(true);
         Matriz.add(txt23);
@@ -270,7 +287,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt24.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt24.setForeground(new java.awt.Color(183, 71, 38));
         txt24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt24.setText("1");
+        txt24.setText("51");
         txt24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt24.setOpaque(true);
         Matriz.add(txt24);
@@ -279,12 +296,20 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
         txt25.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         txt25.setForeground(new java.awt.Color(183, 71, 38));
         txt25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txt25.setText("1");
+        txt25.setText("75");
         txt25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(185, 72, 40), 5));
         txt25.setOpaque(true);
         Matriz.add(txt25);
 
         getContentPane().add(Matriz, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 520, 400));
+
+        btnSubir.setText("jButton1");
+        btnSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 100, 30));
 
         Fondo.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Carton.png"))); // NOI18N
@@ -292,6 +317,117 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
+       subirMatriz();
+    }//GEN-LAST:event_btnSubirActionPerformed
+
+    private void subirMatriz() {
+        try {
+            int[][] numeros = obtenerMatriz();
+            if (numeros == null) {
+                return;
+            }
+            controlador.getControladorCartones().agregarCartonManual();
+            
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    "Error: " + e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    public int[][] obtenerMatriz() {
+        int[][] matriz = new int[5][5];
+        boolean[] usados = new boolean[76];
+
+        javax.swing.JTextField[][] textFields = {
+            {txt1, txt2, txt3, txt4,txt5},
+            {txt6, txt7, txt8, txt9, txt10},
+            {txt11, txt12, txt13, txt14, txt15},
+            {txt16, txt17, txt18, txt19, txt20}, 
+            {txt21, txt22, txt23, txt24, txt25}
+        };
+
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == 2 && j == 2) {
+                    matriz[i][j] = 0;
+                    continue;
+                }
+
+                String texto = textFields[i][j].getText().trim();
+
+                if (texto.isEmpty()) {
+                    JOptionPane.showMessageDialog(this,
+                            "Debe llenar todas las casillas\nFila " + (i + 1) + ", Columna " + (j + 1),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    textFields[i][j].requestFocus();
+                    return null;
+                }
+                
+                int numero;
+                try {
+                    numero = Integer.parseInt(texto);
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this,
+                            "Debe ser un número válido\nFila " + (i + 1) + ", Columna " + (j + 1),
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    textFields[i][j].requestFocus();
+                    return null;
+                }
+
+                if (numero < 1 || numero > 75) {
+                    JOptionPane.showMessageDialog(this,
+                            "Los números deben estar entre 1 y 75\nIngresaste: " + numero,
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    textFields[i][j].requestFocus();
+                    return null;
+                }
+
+                if (usados[numero]) {
+                    JOptionPane.showMessageDialog(this,
+                            "El número " + numero + " está duplicado",
+                            "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    textFields[i][j].requestFocus();
+                    return null;
+                }
+
+                matriz[i][j] = numero;
+                usados[numero] = true;
+            }
+        }
+
+        return matriz;
+    }
+    
+    
+     private void configurarCerrar() {
+        this.addInternalFrameListener(new InternalFrameAdapter() {
+            @Override
+            public void internalFrameClosing(InternalFrameEvent e) {
+                cerrar();
+            }
+        });
+    }
+    
+    public void cerrar() {
+        int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
+                "¿Desea cancelar la creacion manual? " + "?",
+                "Creacion Cartón",
+                javax.swing.JOptionPane.YES_NO_OPTION);
+
+        if (respuesta == javax.swing.JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -302,6 +438,7 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt10;
     private javax.swing.JTextField txt11;
     private javax.swing.JTextField txt12;
+    private javax.swing.JTextField txt13;
     private javax.swing.JTextField txt14;
     private javax.swing.JTextField txt15;
     private javax.swing.JTextField txt16;

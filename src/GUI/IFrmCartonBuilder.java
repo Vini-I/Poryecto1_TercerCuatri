@@ -4,16 +4,23 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+
 /**
  *
  * @author llean
  */
 public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
-
+    
+    private ControladorPrincipal controlador;
+    private FrmDesktopPane desktop;
     /**
      * Creates new form IFrmCartonBuilder
      */
-    public IFrmCartonBuilder() {
+    public IFrmCartonBuilder(ControladorPrincipal controlador,
+            FrmDesktopPane desktop) {
+        this.controlador = controlador;
+        this.desktop = desktop;
         initComponents();
     }
 
@@ -101,13 +108,23 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAutoActionPerformed
-        // TODO add your handling code here:
+        controlador.getControladorCartones().agregarCartonAutomatico();
+        getCantidadCartones();
     }//GEN-LAST:event_btnAutoActionPerformed
 
     private void btnManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManualActionPerformed
-        // TODO add your handling code here:
+       controlador.getControladorCartones().abrirCreacionCartonManual();
     }//GEN-LAST:event_btnManualActionPerformed
 
+    public int getCantidadCartones(){
+        int cantidad = controlador.getGestorJuego().getCantidadCartones();
+        return cantidad;
+    }
+    
+    private void cerrarFrame(){
+        this.setVisible(false);
+        this.dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAuto;
