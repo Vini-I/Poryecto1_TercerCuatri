@@ -52,14 +52,7 @@ public class GestorJuego {
         }
         return instancia;
     }
-    
-    // ========================================================================
-    // GESTIÓN DE CARTONES
-    // ========================================================================
-    
-    /**
-     * Agrega un cartón automático
-     */
+
     public Carton agregarCartonAutomatico(String id) throws Exception {
         Carton carton = gestorCartones.agregarCartonAutomatico(id);
         if(carton == null){
@@ -68,19 +61,13 @@ public class GestorJuego {
         notificador.notificar("CARTON_AGREGADO", carton);
         return carton;
     }
-    
-    /**
-     * Agrega un cartón manual
-     */
+
     public Carton agregarCartonManual(String id, int[][] numeros) throws Exception {
         Carton carton = gestorCartones.agregarCartonManual(id, numeros);
         notificador.notificar("CARTON_AGREGADO", carton);
         return carton;
     }
-    
-    /**
-     * Elimina un cartón
-     */
+
     public boolean eliminarCarton(String id) {
         Carton carton = gestorCartones.buscarCarton(id);
         boolean eliminado = gestorCartones.eliminarCarton(id);
@@ -89,21 +76,11 @@ public class GestorJuego {
         }
         return eliminado;
     }
-    
-    /**
-     * Busca un cartón por ID
-     */
+
     public Carton buscarCarton(String id) {
         return gestorCartones.buscarCarton(id);
     }
-    
-    // ========================================================================
-    // CONTROL DEL JUEGO
-    // ========================================================================
-    
-    /**
-     * Inicia el juego
-     */
+
     public void iniciarJuego() throws IllegalStateException {
         if (!gestorCartones.hayCartones()) {
             throw new IllegalStateException("Debe agregar al menos un cartón");
@@ -115,10 +92,6 @@ public class GestorJuego {
         notificador.notificar("JUEGO_INICIADO", null);
     }
     
-    /**
-     * Procesa la siguiente jugada automática
-     * @return El número extraído
-     */
     public int procesarSiguienteJugada() throws IllegalStateException, NumeroInvalidoExcepcion {
         validarJuegoActivo();
         
@@ -135,9 +108,6 @@ public class GestorJuego {
         return numero;
     }
     
-    /**
-     * Procesa un número ingresado manualmente
-     */
     public void procesarNumeroManual(int numero) throws IllegalStateException, NumeroInvalidoExcepcion {
         validarJuegoActivo();
         
@@ -148,10 +118,7 @@ public class GestorJuego {
         tombola.extraerNumeroManual(numero);
         procesarNumero(numero);
     }
-    
-    /**
-     * Procesa un número (marca en tablero y cartones, verifica ganador)
-     */
+
     private void procesarNumero(int numero) throws NumeroInvalidoExcepcion {
         tablero.marcarNumero(numero);
         gestorCartones.marcarNumeroEnTodos(numero);
@@ -159,19 +126,13 @@ public class GestorJuego {
         
         verificarGanador();
     }
-    
-    /**
-     * Desmarca un número (solo en cartones, no en tablero)
-     */
+
     public void desmarcarNumero(int numero) {
         gestorCartones.desmarcarNumeroEnTodos(numero);
         cartonGanador = null;
         notificador.notificar("NUMERO_DESMARCADO", numero);
     }
     
-    /**
-     * Reinicia el juego completo
-     */
     public void reiniciarJuego() {
         tombola.reiniciar();
         tablero.reiniciar();
@@ -180,17 +141,10 @@ public class GestorJuego {
         juegoIniciado = false;
         notificador.notificar("JUEGO_REINICIADO", null);
     }
-    
-    // ========================================================================
-    // VERIFICACIÓN DE GANADORES (Strategy Pattern)
-    // ========================================================================
-    
-    /**
-     * Verifica si hay un ganador según el modo de juego
-     */
+
     private void verificarGanador() {
         if (cartonGanador != null) {
-            return; // Ya hay ganador
+            return;
         }
         
         Carton ganador = null;
@@ -207,10 +161,7 @@ public class GestorJuego {
             notificador.notificar("GANADOR_ENCONTRADO", ganador);
         }
     }
-    
-    /**
-     * Verifica ganador en modo normal (múltiples formas de ganar)
-     */
+
     private Carton verificarGanadorModoNormal() {
         Winable[] estrategias = {
             new JugadaHorizontal(),
@@ -228,10 +179,7 @@ public class GestorJuego {
         }
         return null;
     }
-    
-    /**
-     * Verifica con una estrategia específica
-     */
+
     private Carton verificarConEstrategia(Winable estrategia) {
         for (Carton carton : gestorCartones.getCartones()) {
             if (estrategia.verificarJugada(carton)) {
@@ -240,10 +188,7 @@ public class GestorJuego {
         }
         return null;
     }
-    
-    /**
-     * Obtiene la estrategia según el modo de juego
-     */
+
     private Winable obtenerEstrategia() {
         switch (modoJuego) {
             case CUATRO_ESQUINAS:
@@ -254,10 +199,7 @@ public class GestorJuego {
                 return new JugadaHorizontal();
         }
     }
-    
-    /**
-     * Valida que el juego esté activo
-     */
+
     private void validarJuegoActivo() throws IllegalStateException {
         if (!juegoIniciado) {
             throw new IllegalStateException("El juego no ha sido iniciado");
@@ -266,31 +208,17 @@ public class GestorJuego {
             throw new IllegalStateException("Ya hay un ganador");
         }
     }
-    
-    // ========================================================================
-    // CONFIGURACIÓN
-    // ========================================================================
-    
-    /**
-     * Cambia el modo de juego
-     */
+
     public void setModoJuego(ModoJuego modoJuego) {
         this.modoJuego = modoJuego;
         notificador.notificar("MODO_JUEGO_CAMBIADO", modoJuego);
     }
-    
-    /**
-     * Cambia el modo de entrada
-     */
+
     public void setModoEntrada(ModoEntrada modoEntrada) {
         this.modoEntrada = modoEntrada;
         notificador.notificar("MODO_ENTRADA_CAMBIADO", modoEntrada);
     }
-    
-    // ========================================================================
-    // OBSERVER
-    // ========================================================================
-    
+
     public void agregarObservador(ObservadorJuego observador) {
         notificador.agregarObservador(observador);
     }
@@ -298,10 +226,6 @@ public class GestorJuego {
     public void eliminarObservador(ObservadorJuego observador) {
         notificador.eliminarObservador(observador);
     }
-    
-    // ========================================================================
-    // CONSULTAS (Getters)
-    // ========================================================================
     
     public ArrayList<Carton> getCartones() {
         return gestorCartones.getCartones();

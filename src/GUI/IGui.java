@@ -14,22 +14,40 @@ import java.util.List;
  * @author rodol
  */
 public interface IGui {
+    
+    void mostrarFrameAñadirCarton();
+    void mostrarFrameCartonManual();
+    void mostrarFrameModoEntrada();
+    void mostrarFrameTipoPartida();
+    void mostrarFrameTablero();
+    void mostrarFrameTombolaAutomatica();
+    void mostrarFrameTombolaManual();
+    void cerrarFramesConfiguracion();
+    void agregarFrameCarton(Carton carton);
+    void actualizarFrameCarton(Carton carton);
+    void eliminarFrameCarton(String idCarton);
+    void marcarNumeroEnCartones(int numero);
+    void reiniciarMarcasCartones();
+    void marcarNumeroEnTablero(int numero);
+    void reiniciarTablero();
     void actualizarUltimoNumero(int numero);
-    void actualizarTablero(int numero);
-    void actualizarCartones(List<Carton> cartones);
-    void agregarCartonAVista(Carton carton);
-    void eliminarCartonDeVista(String idCarton);
-    void mostrarGanador(Carton carton, String tipoJugada);
+    void habilitarBotonIngresarManual(boolean habilitar);
+    void habilitarBotonGenerarAuto(boolean habilitar);
     void habilitarConfiguracion(boolean habilitar);
-    void habilitarControlesJuego(boolean habilitar);
-    void actualizarModoJuego(ModoJuego modo);
     void actualizarModoEntrada(ModoEntrada modo);
+    void actualizarTipoPartida(ModoJuego modo);
     void mostrarMensaje(String mensaje, String titulo);
     void mostrarError(String mensaje);
     boolean confirmar(String mensaje, String titulo);
     String solicitarTexto(String mensaje, String titulo);
-    int[][] solicitarMatrizCartonManual();
-    void limpiarTodo();
-    void limpiarMarcasCartones();
-    void limpiarTablero();
+    void mostrarGanador(Carton carton, String tipoJugada);
+    int[][] obtenerMatrizCartonManual();
+    
+    
+    
+    
+    
+    
+    
+    
 }

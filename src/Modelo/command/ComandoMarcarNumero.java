@@ -24,7 +24,7 @@ public class ComandoMarcarNumero implements Comando {
 
     public ComandoMarcarNumero(int numero, ArrayList<Carton> cartonesAfectados) {
         this.numero = numero;
-        this.cartones = cartones.getInstancia();
+        this.cartones = ListaCartones.getInstancia();
         this.cartonesAfectados = cartonesAfectados;
     }
 
