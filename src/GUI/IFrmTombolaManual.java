@@ -72,8 +72,12 @@ public class IFrmTombolaManual extends javax.swing.JInternalFrame {
         txtPrincipal.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         txtPrincipal.setForeground(new java.awt.Color(21, 84, 108));
         txtPrincipal.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtPrincipal.setText("20");
         txtPrincipal.setBorder(null);
+        txtPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPrincipalActionPerformed(evt);
+            }
+        });
 
         lblSecundario.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         lblSecundario.setForeground(new java.awt.Color(21, 85, 124));
@@ -127,6 +131,10 @@ public class IFrmTombolaManual extends javax.swing.JInternalFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         ingresarNumeroManual();
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void txtPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrincipalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrincipalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

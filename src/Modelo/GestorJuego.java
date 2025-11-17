@@ -34,6 +34,7 @@ public class GestorJuego {
     private ModoEntrada modoEntrada;
     private boolean juegoIniciado;
     private Carton cartonGanador;
+    private String jugadaGanadora;
     
     private GestorJuego() {
         this.gestorCartones = ListaCartones.getInstancia();
@@ -155,6 +156,7 @@ public class GestorJuego {
         tablero.reiniciar();
         gestorCartones.reiniciarTodos();
         cartonGanador = null;
+        jugadaGanadora = null;
         notificador.notificar("JUEGO_REINICIADO", null);
     }
 
@@ -165,25 +167,34 @@ public class GestorJuego {
         
         System.out.println(modoJuego);
         Carton ganador = null;
-        
+        String jugada = null;
+
         if (modoJuego == ModoJuego.NORMAL) {
-            ganador = verificarGanadorModoNormal();
+            Object[] resultado = verificarGanadorModoNormal();
+            if (resultado != null) {
+                ganador = (Carton) resultado[0];
+                jugada = (String) resultado[1];
+            }
         } else {
             Winable estrategia = obtenerEstrategia();
-            System.out.println(estrategia.getClass().getSimpleName());
             ganador = verificarConEstrategia(estrategia);
+            
+            if (ganador != null){
+                jugada = estrategia.getClass().getSimpleName();
+            }
         }
         
         if (ganador != null) {
             System.out.println(ganador.getId());
             cartonGanador = ganador;
+            jugadaGanadora = jugada;
             notificador.notificar("GANADOR_ENCONTRADO", ganador);
         }else{
             System.out.println("no hay ganador");
         }
     }
 
-    private Carton verificarGanadorModoNormal() {
+    private Object [] verificarGanadorModoNormal() {
         
         System.out.println("inicio");
         Winable[] estrategias = {
@@ -227,7 +238,7 @@ public class GestorJuego {
                 System.out.println(">>> Cartón: " + carton.getId());
                 System.out.println(">>> Estrategia: " + estrategia.getClass().getSimpleName());
                 System.out.println("========================================");
-                return carton;
+                return new Object [] {carton,estrategia.getClass().getSimpleName()};
             }
         }
     }
@@ -312,6 +323,10 @@ public class GestorJuego {
     
     public ModoEntrada getModoEntrada() {
         return modoEntrada;
+    }
+    
+    public String getJugadaGanadora(){
+        return jugadaGanadora;
     }
     
     public int getUltimoNumero() {

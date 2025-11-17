@@ -201,17 +201,14 @@ public class ControladorPartida implements ObservadorJuego {
                 vista.marcarNumeroEnCartones(numero);
                 break;
                 
-            case "NUMERO_DESMARCADO":
-                int numeroDesmarcado = (Integer) evento.getDatos();
-                vista.actualizarUltimoNumeroTombola(0);
-                break;
-
             case "GANADOR_ENCONTRADO":
                 Carton ganador = (Carton) evento.getDatos();
                 detenerModoAutomatico();
-                vista.mostrarGanador(ganador, gestor.getModoJuego().toString());
+                String jugadaGanadora = gestor.getJugadaGanadora();
+                vista.mostrarGanador(ganador, jugadaGanadora);
                 vista.habilitarBotonGenerarAuto(false);
                 vista.habilitarBotonIngresarManual(false);
+                vista.habilitarBotonDeshacer(false);
                 break;
 
             case "JUEGO_REINICIADO":
@@ -219,6 +216,8 @@ public class ControladorPartida implements ObservadorJuego {
                 reiniciarHistorial();
                 vista.habilitarBotonGenerarAuto(true);
                 vista.habilitarBotonIngresarManual(true);
+                vista.habilitarBotonDeshacer(true);
+                vista.cerrarFrameGanaste();
                 break;
             
             case "MODO_ENTRADA_CAMBIADO":

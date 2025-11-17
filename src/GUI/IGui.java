@@ -21,7 +21,7 @@ public interface IGui {
     void mostrarFrameTablero();
     void mostrarFrameTombolaAutomatica();
     void mostrarFrameTombolaManual();
-    void cerrarFramesConfiguracion();
+    void cerrarFrameGanaste();
     void agregarFrameCarton(Carton carton);
     void actualizarCartones();
     void eliminarFrameCarton(String idCarton);

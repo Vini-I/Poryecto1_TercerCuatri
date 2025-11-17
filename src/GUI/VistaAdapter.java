@@ -61,7 +61,8 @@ public class VistaAdapter implements IGui {
     }
 
     @Override
-    public void cerrarFramesConfiguracion() {
+    public void cerrarFrameGanaste() {
+        desktop.cerrarFrameGanaste();
     }
 
     @Override
@@ -177,17 +178,7 @@ public class VistaAdapter implements IGui {
 
     @Override
     public void mostrarGanador(Carton carton, String tipoJugada) {
-         String mensaje = "🎉 ¡¡¡BINGO!!! 🎉\n\n" +
-                     "Ganador: " + carton.getId() + "\n" +
-                     "Tipo de jugada: " + tipoJugada + "\n\n" +
-                     "¡Felicidades!";
-    
-    javax.swing.JOptionPane.showMessageDialog(desktop,
-        mensaje,
-        "¡TENEMOS UN GANADOR!",
-        javax.swing.JOptionPane.INFORMATION_MESSAGE);
-    
-    desktop.resaltarCartonGanador(carton.getId());
+        desktop.mostrarFrameGanador(carton, tipoJugada);
     }
 
     @Override

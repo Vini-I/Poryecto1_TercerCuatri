@@ -30,8 +30,7 @@ public class ControladorPrincipal implements ObservadorJuego {
     public void iniciarJuego() {
         try {
             gestor.iniciarJuego();
-
-            vista.cerrarFramesConfiguracion();
+            
             vista.habilitarConfiguracion(false);
 
             vista.mostrarFrameTablero();

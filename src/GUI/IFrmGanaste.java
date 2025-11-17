@@ -4,18 +4,63 @@
  */
 package GUI;
 
+import Modelo.Carton;
+
 /**
  *
  * @author llean
  */
 public class IFrmGanaste extends javax.swing.JInternalFrame {
+    
+    private Carton ganador;
+    private String tipoJugada;
 
     /**
      * Creates new form IFrmGanaste
      */
-    public IFrmGanaste() {
+    public IFrmGanaste(Carton ganador, String tipoJugada) {
+        this.ganador = ganador;
+        this.tipoJugada = tipoJugada;
         initComponents();
+        mostrarDatosGanador();
     }
+    
+    private void mostrarDatosGanador() {
+        lblCartonG.setText("Carton ganador: " + ganador.getId());
+        
+        String tipoFormateado = formatearTipoJugada(tipoJugada);
+        lblJugada.setText("Tipo de Jugada: " + tipoFormateado);
+    }
+    
+    private String formatearTipoJugada(String tipo) {
+        if (tipo == null) {
+            return "Desconocido";
+        }
+
+        switch (tipo) {
+            case "JugadaHorizontal":
+                return "Línea Horizontal";
+            case "JugadaVertical":
+                return "Línea Vertical";
+            case "JugadaDiagonal":
+                return "Diagonal";
+            case "JugadaCuatroEsquinas":
+            case "Jugada4Esquinas":
+                return "Cuatro Esquinas";
+            case "JugadaCartonLleno":
+                return "Cartón Lleno";
+            default:
+                return tipo;
+        }
+    }
+    
+    public void cerrar(){
+        this.setVisible(false);
+        this.dispose();
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

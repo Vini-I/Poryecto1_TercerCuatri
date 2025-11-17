@@ -39,19 +39,6 @@ public class Tablero {
         return true;
     }
 
-    public boolean desmarcarNumero(int numero) throws NumeroInvalidoExcepcion {
-        if (numero < 1 || numero > 75) {
-            throw new NumeroInvalidoExcepcion();
-        }
-
-        if (!numerosGenerados[numero]) {
-            return false;
-        }
-
-        numerosGenerados[numero] = false;
-        return true;
-    }
-
     public boolean estaGenerado(int numero) {
         return numerosGenerados[numero];
     }

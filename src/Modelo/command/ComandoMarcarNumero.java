@@ -4,13 +4,8 @@
  */
 package Modelo.command;
 
-import Exceptions.NumeroInvalidoExcepcion;
 import Modelo.Carton;
-import Modelo.Tablero;
-import Modelo.listas.ListaCartones;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

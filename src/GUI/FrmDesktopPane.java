@@ -87,6 +87,37 @@ public class FrmDesktopPane extends javax.swing.JFrame {
             vistaAdaptador.setFrameTombolaManual(frameTombola);
         }
     }
+    
+    private IFrmGanaste frameGanador = null;
+    
+    public void mostrarFrameGanador(Modelo.Carton ganador, String tipoJugada) {
+    System.out.println(">>> [FrmDesktopPane.mostrarFrameGanador] Mostrando ganador: " + ganador.getId());
+    
+    cerrarFrameGanaste();
+    frameGanador = new IFrmGanaste(ganador, tipoJugada);
+    jDesktopPane1.add(frameGanador);
+
+    centrarFrame(frameGanador);
+
+    frameGanador.toFront();
+    frameGanador.setVisible(true);
+
+    try {
+        frameGanador.setSelected(true);
+    } catch (java.beans.PropertyVetoException e) {
+        e.printStackTrace();
+    }
+    
+    System.out.println(">>> [FrmDesktopPane.mostrarFrameGanador] Frame mostrado");
+}
+    
+    public void cerrarFrameGanaste() {
+        if (frameGanador != null) {
+            System.out.println(">>> [FrmDesktopPane.cerrarFrameGanador] Cerrando frame de ganador");
+            frameGanador.cerrar();
+            frameGanador = null;
+        }
+    }
 
     
      private void centrarFrame(javax.swing.JInternalFrame frame) {
@@ -142,22 +173,7 @@ public class FrmDesktopPane extends javax.swing.JFrame {
             frameCarton.actualizarMatriz();
         }
     }
-}
-    
-    public void resaltarCartonGanador(String idGanador) {
-    for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
-        if (frame instanceof IFrmCarton) {
-            IFrmCarton frameCarton = (IFrmCarton) frame;
-            if (frameCarton.getCarton().getId().equals(idGanador)) {
-                frameCarton.setTitle("🏆 GANADOR: " + idGanador + " 🏆");
-                frameCarton.toFront();
-                break;
-            }
-        }
-    }
-}
-    
-    
+}   
 
     private int offsetX = 0;
     private int offsetY = 0;
