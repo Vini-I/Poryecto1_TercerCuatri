@@ -19,23 +19,27 @@ import java.util.logging.Logger;
 public class ComandoMarcarNumero implements Comando {
     
      private int numero;
-    private ListaCartones cartones;
+    private ArrayList<Carton> cartones;
     private ArrayList<Carton> cartonesAfectados;
 
-    public ComandoMarcarNumero(int numero, ArrayList<Carton> cartonesAfectados) {
+    public ComandoMarcarNumero(int numero, ArrayList<Carton> cartones) {
         this.numero = numero;
-        this.cartones = ListaCartones.getInstancia();
-        this.cartonesAfectados = cartonesAfectados;
+        this.cartones = new ArrayList(cartones);
+        this.cartonesAfectados = new ArrayList();
     }
 
     @Override
     public void ejecutar() {
-        cartonesAfectados.clear();
-        for (Carton carton : cartones.getCartones()) {
-            if (carton.marcarNumero(numero)) {
+      System.out.println(">>> [ComandoMarcarNumero.ejecutar] Guardando para deshacer. Número: " + numero);
+        
+        for (Carton carton : cartones) {
+            if (cartonTieneNumero(carton, numero)) {
                 cartonesAfectados.add(carton);
+                System.out.println(">>> [ComandoMarcarNumero.ejecutar] Cartón afectado: " + carton.getId());
             }
         }
+        
+        System.out.println(">>> [ComandoMarcarNumero.ejecutar] Total cartones afectados: " + cartonesAfectados.size());
     }
 
     @Override

@@ -18,16 +18,23 @@ public class JugadaHorizontal implements Winable {
         boolean[][] marcados = carton.getMarcados();
         for (int i = 0; i < 5; i++) {
             boolean filaCompleta = true;
-                    String estado = "Fila " + i + ": ";
+            int marcadasEnFila = 0;
+            String detalle = "    >>> Fila " + i + ": ";
             for (int j = 0; j < 5; j++) {
                 boolean marcado = marcados[i][j];
-                estado += (marcado ? "[X]" : "[ ]") + " ";
+                detalle += (marcado ? "[X]" : "[ ]") + " ";
                 if (!marcado) {
                     filaCompleta = false;
                     //break; poner el break luego
+                }else{
+                    marcadasEnFila ++;
                 }
             }
-                    System.out.println(">>> [JugadaHorizontal] " + estado + (filaCompleta ? "✓ COMPLETA" : "✗ incompleta"));
+            detalle += " (" + marcadasEnFila + "/5 marcadas)";
+            
+            if (filaCompleta) {
+            detalle += " ✓✓✓ COMPLETA ✓✓✓";
+        }
             
             if (filaCompleta) {
                            System.out.println(">>> [JugadaHorizontal] ¡¡¡LÍNEA HORIZONTAL ENCONTRADA EN FILA " + i + "!!!");

@@ -34,6 +34,7 @@ public interface IGui {
     void actualizarUltimoNumeroTombola(int numero);
     void habilitarBotonIngresarManual(boolean habilitar);
     void habilitarBotonGenerarAuto(boolean habilitar);
+    void habilitarBotonDeshacer(boolean habilitar);
     void habilitarConfiguracion(boolean habilitar);
     void actualizarModoEntrada(ModoEntrada modo);
     void actualizarTipoPartida(ModoJuego modo);

@@ -27,24 +27,27 @@ public class ControladorPrincipal implements ObservadorJuego {
         this.controladorPartida = new ControladorPartida(vista, gestor);
     }
 
-
     public void iniciarJuego() {
         try {
             gestor.iniciarJuego();
 
             vista.cerrarFramesConfiguracion();
             vista.habilitarConfiguracion(false);
-            
+
             vista.mostrarFrameTablero();
-            
-            if (gestor.getModoEntrada() == ModoEntrada.AUTOMATICO) {
-                vista.mostrarFrameTombolaAutomatica();
-            } else {
+
+            boolean modoManual = gestor.getModoEntrada() == ModoEntrada.MANUAL;
+            vista.habilitarBotonDeshacer(modoManual);
+
+            if (modoManual) {
                 vista.mostrarFrameTombolaManual();
+
+            } else {
+                vista.mostrarFrameTombolaAutomatica();
             }
-            
+
             vista.mostrarMensaje("¡Juego iniciado! Buena suerte", "Bingo");
-            
+
         } catch (IllegalStateException e) {
             vista.mostrarError(e.getMessage());
         }

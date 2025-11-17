@@ -139,6 +139,12 @@ public class VistaAdapter implements IGui {
     }
 
     @Override
+    public void habilitarBotonDeshacer(boolean habilitar){
+        if (tablero != null) {
+        tablero.habilitarBotonDeshacer(habilitar);
+    }
+    }
+    @Override
     public void actualizarModoEntrada(ModoEntrada modo) {
         System.out.println("Modo de entrada actualizado: " + modo);
     }

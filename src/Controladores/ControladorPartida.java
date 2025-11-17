@@ -161,10 +161,11 @@ public class ControladorPartida implements ObservadorJuego {
             vista.mostrarError("No hay números para desmarcar");
             return;
         }
-        
+          Integer numeroADesmarcar = historial.obtenerUltimoNumero();
+          
         boolean confirma = vista.confirmar(
-            "¿Desmarcar el último número?", 
-            "Confirmar"
+        "¿Desmarcar el número " + numeroADesmarcar + " de los cartones?", 
+        "Confirmar"
         );
         
         if (confirma) {
@@ -172,7 +173,8 @@ public class ControladorPartida implements ObservadorJuego {
             historial.deshacer();
             System.out.println(historial.getCantidadComandos());
             vista.actualizarCartones();
-            vista.mostrarMensaje("Número desmarcado: " + gestor.getUltimoNumero(), "Deshacer");
+            vista.mostrarMensaje("Número " + numeroADesmarcar + " desmarcado de los cartones", 
+            "Deshacer");
         }
     }
 
@@ -217,6 +219,13 @@ public class ControladorPartida implements ObservadorJuego {
                 reiniciarHistorial();
                 vista.habilitarBotonGenerarAuto(true);
                 vista.habilitarBotonIngresarManual(true);
+                break;
+            
+            case "MODO_ENTRADA_CAMBIADO":
+                ModoEntrada modo = (ModoEntrada) evento.getDatos();
+                System.out.println(">>> [ControladorPartida.actualizar] Modo entrada: " + modo);
+
+                vista.habilitarBotonDeshacer(modo == ModoEntrada.MANUAL);
                 break;
         }
     }

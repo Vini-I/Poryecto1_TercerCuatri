@@ -200,27 +200,43 @@ public class GestorJuego {
             System.out.println(">>> [verificarGanadorModoNormal] Verificando cartón: " + carton.getId());
                 System.out.println(">>> [verificarGanadorModoNormal] Hash del cartón: " + System.identityHashCode(carton));
            
+            int [][] numeros = carton.getNumeros();
             boolean[][] marcados = carton.getMarcados();
             System.out.println(">>> [verificarGanadorModoNormal] Estado del cartón:");
             for (int i = 0; i < 5; i++) {
                 String fila = "Fila " + i + ": ";
                 for (int j = 0; j < 5; j++) {
-                    fila += (marcados[i][j] ? "[X]" : "[ ]") + " ";
+                    String num = String.format("%2d", numeros[i][j]);
+                    String marca = marcados[i][j] ? "[X]" : "[ ]";
+                    fila += num + marca + " ";
                 }
                 System.out.println(">>> " + fila);
             }
+             for (int k = 0; k < estrategias.length; k++) {
+            Winable estrategia = estrategias[k];
+            System.out.println("\n>>> Probando estrategia " + (k+1) + "/" + estrategias.length + ": " + 
+                estrategia.getClass().getSimpleName());
             
-            for (Winable estrategia : estrategias) { 
-                System.out.println(">>> [verificarGanadorModoNormal] Probando estrategia: " + estrategia.getClass().getSimpleName());
-                boolean resultado = estrategia.verificarJugada(carton);
-                if (resultado) {
-                                System.out.println(">>> [verificarGanadorModoNormal] Resultado: " + resultado);
-                    return carton;
-                }
+            boolean resultado = estrategia.verificarJugada(carton);
+            
+            System.out.println(">>> Resultado: " + (resultado ? "¡GANADOR!" : "No ganador"));
+            
+            if (resultado) {
+                System.out.println("========================================");
+                System.out.println(">>> ¡¡¡GANADOR ENCONTRADO!!!");
+                System.out.println(">>> Cartón: " + carton.getId());
+                System.out.println(">>> Estrategia: " + estrategia.getClass().getSimpleName());
+                System.out.println("========================================");
+                return carton;
             }
         }
-            System.out.println(">>> [verificarGanadorModoNormal] ===== FIN ===== No hay ganador");
-        return null;
+    }
+    
+    System.out.println("\n========================================");
+    System.out.println(">>> [verificarGanadorModoNormal] FIN - No hay ganador");
+    System.out.println("========================================");
+    return null;
+            
     }
 
     private Carton verificarConEstrategia(Winable estrategia) {

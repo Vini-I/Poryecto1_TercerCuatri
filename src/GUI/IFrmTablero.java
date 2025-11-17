@@ -5,6 +5,8 @@
 package GUI;
 
 import Controladores.ControladorPrincipal;
+import Modelo.Jugadas.ModoJuego;
+import Modelo.ModoEntrada;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -147,7 +149,11 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
             labels[i].setFont(new Font("Arial", Font.PLAIN, 36));
         }
     }
-    
+     
+     
+    public void habilitarBotonDeshacer(boolean habilitar) {
+        btnDeshacer.setEnabled(habilitar);
+    }
     
     
 
