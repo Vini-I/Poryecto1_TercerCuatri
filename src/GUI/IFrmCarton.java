@@ -64,12 +64,12 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
 
         if (fila == 2 && col == 2) {
             label.setText("FREE");
-            label.setFont(new Font("Arial", Font.BOLD, 18));
-            label.setBackground(new Color(46, 125, 50));
-            label.setForeground(Color.WHITE);
+            label.setFont(new Font("Arial", Font.PLAIN, 36));
+            label.setBackground(new Color(186,74,40));
+            label.setForeground(new Color(242,213,148));
         } else {
             label.setText(String.valueOf(numero));
-            label.setFont(new Font("Arial", Font.BOLD, 24));
+            label.setFont(new Font("Arial", Font.PLAIN, 36));
             
             if (marcado) {
                 label.setBackground(new Color(255, 193, 7));

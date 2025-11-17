@@ -303,13 +303,17 @@ public class IFrmCartonManual extends javax.swing.JInternalFrame {
 
         getContentPane().add(Matriz, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 520, 400));
 
-        btnSubir.setText("jButton1");
+        btnSubir.setBackground(new java.awt.Color(183, 71, 38));
+        btnSubir.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnSubir.setForeground(new java.awt.Color(240, 210, 145));
+        btnSubir.setText("Ingresar");
+        btnSubir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 210, 145), 5));
         btnSubir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 100, 100, 30));
+        getContentPane().add(btnSubir, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 540, 80));
 
         Fondo.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Carton.png"))); // NOI18N

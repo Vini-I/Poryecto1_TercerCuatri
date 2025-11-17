@@ -40,6 +40,7 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
         btnAuto = new javax.swing.JButton();
         lblManual = new javax.swing.JLabel();
         lblCarton2 = new javax.swing.JLabel();
+        btnManual1 = new javax.swing.JButton();
         btnManual = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(33, 101, 137));
@@ -82,6 +83,18 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
         lblCarton2.setText("Carton");
         jPanel1.add(lblCarton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 90, 150, -1));
 
+        btnManual1.setBackground(new java.awt.Color(232, 211, 164));
+        btnManual1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnManual1.setForeground(new java.awt.Color(34, 101, 138));
+        btnManual1.setText("Empezar Partida");
+        btnManual1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(232, 211, 164), 1, true));
+        btnManual1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManual1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnManual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 430, 180));
+
         btnManual.setBackground(new java.awt.Color(232, 211, 164));
         btnManual.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         btnManual.setForeground(new java.awt.Color(34, 101, 138));
@@ -101,7 +114,7 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
         );
 
         pack();
@@ -116,6 +129,10 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
        controlador.getControladorCartones().abrirCreacionCartonManual();
     }//GEN-LAST:event_btnManualActionPerformed
 
+    private void btnManual1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManual1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManual1ActionPerformed
+
     public int getCantidadCartones(){
         int cantidad = controlador.getGestorJuego().getCantidadCartones();
         return cantidad;
@@ -129,6 +146,7 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAuto;
     private javax.swing.JButton btnManual;
+    private javax.swing.JButton btnManual1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAuto;
     private javax.swing.JLabel lblCarton1;

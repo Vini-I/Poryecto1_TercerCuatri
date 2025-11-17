@@ -37,22 +37,43 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         Matriz = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Matriz.setBackground(new java.awt.Color(11, 88, 132));
         Matriz.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 204, 179), 5));
+        Matriz.setForeground(new java.awt.Color(214, 204, 179));
         Matriz.setPreferredSize(new java.awt.Dimension(840, 278));
         Matriz.setLayout(new java.awt.GridLayout(5, 15));
+        getContentPane().add(Matriz, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 828, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Matriz, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+        jPanel1.setBackground(new java.awt.Color(11, 88, 132));
+
+        jButton1.setBackground(new java.awt.Color(214, 204, 179));
+        jButton1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(11, 88, 132));
+        jButton1.setText("Reiniciar");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(286, 286, 286)
+                .addComponent(jButton1)
+                .addContainerGap(328, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Matriz, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 830, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -98,5 +119,7 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Matriz;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
