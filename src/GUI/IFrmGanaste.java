@@ -27,25 +27,62 @@ public class IFrmGanaste extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         lblGanaste = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        lblJugada = new javax.swing.JLabel();
+        lblCartonG = new javax.swing.JLabel();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblGanaste.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Ganaste.png"))); // NOI18N
+        getContentPane().add(lblGanaste, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblGanaste)
+        jPanel1.setBackground(new java.awt.Color(0, 80, 130));
+
+        lblJugada.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblJugada.setForeground(new java.awt.Color(230, 200, 151));
+        lblJugada.setText("Tipo de Jugada:");
+
+        lblCartonG.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblCartonG.setForeground(new java.awt.Color(230, 200, 151));
+        lblCartonG.setText("Carton ganador:");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(lblJugada)
+                .addContainerGap(222, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(55, 55, 55)
+                    .addComponent(lblCartonG)
+                    .addContainerGap(220, Short.MAX_VALUE)))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblGanaste)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(69, Short.MAX_VALUE)
+                .addComponent(lblJugada)
+                .addGap(53, 53, 53))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(lblCartonG)
+                    .addContainerGap(106, Short.MAX_VALUE)))
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 137, 450, 150));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCartonG;
     private javax.swing.JLabel lblGanaste;
+    private javax.swing.JLabel lblJugada;
     // End of variables declaration//GEN-END:variables
 }

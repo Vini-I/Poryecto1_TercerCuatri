@@ -65,7 +65,10 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDeshacer.setText("jButton1");
+        btnDeshacer.setBackground(new java.awt.Color(214, 204, 179));
+        btnDeshacer.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnDeshacer.setForeground(new java.awt.Color(11, 88, 132));
+        btnDeshacer.setText("Deshacer");
         btnDeshacer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeshacerActionPerformed(evt);
@@ -77,22 +80,19 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(108, 108, 108)
+                .addGap(149, 149, 149)
                 .addComponent(btnDeshacer)
-                .addGap(103, 103, 103)
+                .addGap(45, 45, 45)
                 .addComponent(btnReiniciar)
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addContainerGap(183, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnReiniciar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(btnDeshacer)))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReiniciar)
+                    .addComponent(btnDeshacer))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 

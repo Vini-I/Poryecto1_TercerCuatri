@@ -73,11 +73,13 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
             label.setFont(new Font("Arial", Font.PLAIN, 36));
 
             if (marcado) {
-                label.setBackground(new Color(255, 193, 7));
+                label.setBackground(new Color(186, 74, 40));
+                label.setForeground(new Color(242, 213, 148));
             } else {
-                label.setBackground(new Color(240, 210, 145));
+                label.setBackground(new Color(242, 213, 148));
+                label.setForeground(new Color(186, 74, 40));
             }
-            label.setForeground(new Color(183, 71, 38));
+            
         }
 
         return label;
@@ -95,9 +97,11 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
                 }
 
                 if (marcados[i][j]) {
-                    label.setBackground(new Color(255, 193, 7));
+                    label.setBackground(new Color(186, 74, 40));
+                    label.setForeground(new Color(242, 213, 148));
                 } else {
-                    label.setBackground(new Color(240, 210, 145));
+                    label.setBackground(new Color(242, 213, 148));
+                    label.setForeground(new Color(186, 74, 40));
                 }
             }
         }

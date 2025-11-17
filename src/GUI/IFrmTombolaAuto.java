@@ -74,13 +74,16 @@ public class IFrmTombolaAuto extends javax.swing.JInternalFrame {
         lblSecundario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         getContentPane().add(lblSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 360, 70));
 
-        btnIniciar.setText("jButton2");
+        btnIniciar.setBackground(new java.awt.Color(214, 204, 179));
+        btnIniciar.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnIniciar.setForeground(new java.awt.Color(11, 88, 132));
+        btnIniciar.setText("Empezar");
         btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
+        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 230, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaAuto.png"))); // NOI18N
         getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
