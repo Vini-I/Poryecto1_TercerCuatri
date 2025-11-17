@@ -45,27 +45,39 @@ public class Carton {
     }
 
     public boolean marcarNumero(int numero) {
+            System.out.println(">>> [Carton.marcarNumero] ID: " + id + ", Hash: " + System.identityHashCode(this));
+            System.out.println(">>> [Carton.marcarNumero] Buscando número " + numero + " en cartón " + id);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (numeros[i][j] == numero) {
+                    System.out.println(">>> [Carton.marcarNumero] Encontrado en posición [" + i + "][" + j + "]");
+                    System.out.println(">>> [Carton.marcarNumero] Antes: marcados[" + i + "][" + j + "] = " + marcados[i][j]);
                     marcados[i][j] = true;
+                                    System.out.println(">>> [Carton.marcarNumero] Después: marcados[" + i + "][" + j + "] = " + marcados[i][j]);
                     return true;
                 }
             }
         }
+            System.out.println(">>> [Carton.marcarNumero] Número " + numero + " NO encontrado en el cartón");
         return false;
     }
 
     public boolean desmarcarNumero(int numero) {
+        System.out.println("buscando numero " + numero);
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 if (numeros[i][j] == numero && !(i == 2 && j == 2)) {
+                    System.out.println(" encontrado en " + i + " " + j);
+                    System.out.println("estado antes " + i + "" + j + " = " + marcados[i][j]);
                     marcados[i][j] = false;
+                    System.out.println(">>> Desmarcado número " + numero + " en posición [" + i + "][" + j + "]");
                     return true;
                 }
             }
         }
+        System.out.println("numero " + numero + " no encontrado");
         return false;
+
     }
 
     public void reiniciar() {

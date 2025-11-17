@@ -94,17 +94,26 @@ public class GestorJuego {
     
     public int procesarSiguienteJugada() throws IllegalStateException, NumeroInvalidoExcepcion {
         validarJuegoActivo();
+        System.out.println("juego activo");
         
         if (modoEntrada != ModoEntrada.AUTOMATICO) {
+            System.out.println("no esta en modo automatico " + modoEntrada);
             throw new IllegalStateException("El juego no está en modo automático");
         }
+        System.out.println("modo automatico ok");
         
+        System.out.println("extrayendo numero aleatorio");
         int numero = tombola.extraerNumeroAleatorio();
+        System.out.println("numero generado" + numero);
         if (numero == -1) {
+            System.out.println("no quedan numeros");
             throw new IllegalStateException("No quedan números disponibles");
         }
         
+        System.out.println("llamando procesar numero");
         procesarNumero(numero);
+        System.out.println("numero procesado");
+        System.out.println("retorna " + numero);
         return numero;
     }
     
@@ -119,12 +128,20 @@ public class GestorJuego {
         procesarNumero(numero);
     }
 
-    private void procesarNumero(int numero) throws NumeroInvalidoExcepcion {
+    public void procesarNumero(int numero) throws NumeroInvalidoExcepcion {
+        System.out.println("procesar numero " + numero);
+        System.out.println("marcando en tablero");
         tablero.marcarNumero(numero);
+        System.out.println("tablero marcado");
+        System.out.println("marcando en cartones");
         gestorCartones.marcarNumeroEnTodos(numero);
+        System.out.println("cartones marcados");
+        System.out.println("notificando observer");
         notificador.notificar("NUMERO_PROCESADO", numero);
-        
+        System.out.println("observer notificado");
+        System.out.println("llamado verificar");
         verificarGanador();
+        System.out.println("verificacion completa");
     }
 
     public void desmarcarNumero(int numero) {
@@ -138,7 +155,6 @@ public class GestorJuego {
         tablero.reiniciar();
         gestorCartones.reiniciarTodos();
         cartonGanador = null;
-        juegoIniciado = false;
         notificador.notificar("JUEGO_REINICIADO", null);
     }
 
@@ -147,22 +163,29 @@ public class GestorJuego {
             return;
         }
         
+        System.out.println(modoJuego);
         Carton ganador = null;
         
         if (modoJuego == ModoJuego.NORMAL) {
             ganador = verificarGanadorModoNormal();
         } else {
             Winable estrategia = obtenerEstrategia();
+            System.out.println(estrategia.getClass().getSimpleName());
             ganador = verificarConEstrategia(estrategia);
         }
         
         if (ganador != null) {
+            System.out.println(ganador.getId());
             cartonGanador = ganador;
             notificador.notificar("GANADOR_ENCONTRADO", ganador);
+        }else{
+            System.out.println("no hay ganador");
         }
     }
 
     private Carton verificarGanadorModoNormal() {
+        
+        System.out.println("inicio");
         Winable[] estrategias = {
             new JugadaHorizontal(),
             new JugadaVertical(),
@@ -170,13 +193,33 @@ public class GestorJuego {
             new JugadaCuatroEsquinas()
         };
         
+        System.out.println(">>> [verificarGanadorModoNormal] Cantidad de cartones: " + gestorCartones.getCantidadCartones());
+    System.out.println(">>> [verificarGanadorModoNormal] Cantidad de estrategias: " + estrategias.length);
+        
         for (Carton carton : gestorCartones.getCartones()) {
-            for (Winable estrategia : estrategias) {
-                if (estrategia.verificarJugada(carton)) {
+            System.out.println(">>> [verificarGanadorModoNormal] Verificando cartón: " + carton.getId());
+                System.out.println(">>> [verificarGanadorModoNormal] Hash del cartón: " + System.identityHashCode(carton));
+           
+            boolean[][] marcados = carton.getMarcados();
+            System.out.println(">>> [verificarGanadorModoNormal] Estado del cartón:");
+            for (int i = 0; i < 5; i++) {
+                String fila = "Fila " + i + ": ";
+                for (int j = 0; j < 5; j++) {
+                    fila += (marcados[i][j] ? "[X]" : "[ ]") + " ";
+                }
+                System.out.println(">>> " + fila);
+            }
+            
+            for (Winable estrategia : estrategias) { 
+                System.out.println(">>> [verificarGanadorModoNormal] Probando estrategia: " + estrategia.getClass().getSimpleName());
+                boolean resultado = estrategia.verificarJugada(carton);
+                if (resultado) {
+                                System.out.println(">>> [verificarGanadorModoNormal] Resultado: " + resultado);
                     return carton;
                 }
             }
         }
+            System.out.println(">>> [verificarGanadorModoNormal] ===== FIN ===== No hay ganador");
         return null;
     }
 
@@ -196,7 +239,7 @@ public class GestorJuego {
             case CARTON_LLENO:
                 return new JugadaCartonLleno();
             default:
-                return new JugadaHorizontal();
+                return null;
         }
     }
 

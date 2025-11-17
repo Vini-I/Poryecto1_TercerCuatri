@@ -5,9 +5,6 @@
 package GUI;
 
 import Controladores.ControladorPrincipal;
-import GUI.UtilGUI.UtilsGUI;
-import Modelo.Carton;
-import Modelo.Jugadas.ModoJuego;
 import Modelo.ModoEntrada;
 
 /**

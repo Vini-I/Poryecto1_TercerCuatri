@@ -1,5 +1,6 @@
 package Controladores;
 
+import Exceptions.NumeroInvalidoExcepcion;
 import GUI.IGui;
 import Modelo.Carton;
 import Modelo.GestorJuego;
@@ -94,6 +95,10 @@ public class ControladorCartones implements ObservadorJuego {
             vista.mostrarError("No se encontró el cartón");
         }
     }
+    
+    public void marcarNumeroEnTodosLosCartones(int numero) throws NumeroInvalidoExcepcion {
+    gestor.procesarNumero(numero);
+}
  
     @Override
     public void actualizar(EventoJuego evento) {

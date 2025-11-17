@@ -4,18 +4,53 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+import Exceptions.NumeroInvalidoExcepcion;
+
 /**
  *
  * @author llean
  */
 public class IFrmTombolaManual extends javax.swing.JInternalFrame {
 
+        private ControladorPrincipal controlador;
     /**
      * Creates new form IFrmTombola
      */
-    public IFrmTombolaManual() {
+    public IFrmTombolaManual(ControladorPrincipal controlador) {
+        this.controlador = controlador;
         initComponents();
     }
+    
+    
+    public void actualizarUltimoNumero(int numero) {
+        lblSecundario.setText(String.valueOf(numero));
+        lblSecundario.repaint();
+    }
+    
+    private void ingresarNumeroManual(){
+        String numeroTexto = txtPrincipal.getText().trim();
+        try {
+            controlador.getControladorPartida().procesarNumeroManual(numeroTexto);
+            txtPrincipal.setText("");
+            txtPrincipal.requestFocus();
+            
+        } catch (NumeroInvalidoExcepcion ex) {
+            ex.getMessage();
+            txtPrincipal.setText("");
+            txtPrincipal.requestFocus();
+        }
+    }
+    
+    public void reiniciar() {
+        txtPrincipal.setText("");
+        lblSecundario.setText("");
+        txtPrincipal.setEnabled(true);
+        btnIngresar.setEnabled(true);
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,13 +78,17 @@ public class IFrmTombolaManual extends javax.swing.JInternalFrame {
         lblSecundario.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         lblSecundario.setForeground(new java.awt.Color(21, 85, 124));
         lblSecundario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSecundario.setText("31");
 
         btnIngresar.setBackground(new java.awt.Color(21, 86, 126));
         btnIngresar.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         btnIngresar.setForeground(new java.awt.Color(226, 201, 151));
         btnIngresar.setText("Ingresar");
         btnIngresar.setBorder(null);
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaManual.png"))); // NOI18N
 
@@ -90,6 +129,10 @@ public class IFrmTombolaManual extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        ingresarNumeroManual();
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

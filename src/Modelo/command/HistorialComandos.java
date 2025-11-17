@@ -40,6 +40,16 @@ public class HistorialComandos {
         return historial.size();
     }
 
+    public Integer obtenerUltimoNumero() {
+        if (!historial.isEmpty()) {
+            Comando comando = historial.peek();
+            if (comando instanceof ComandoMarcarNumero) {
+                return ((ComandoMarcarNumero) comando).getNumero();
+            }
+        }
+        return null;
+    }
+
     public void limpiar() {
         historial.clear();
     }

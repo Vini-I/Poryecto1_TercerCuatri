@@ -4,18 +4,49 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
+
 /**
  *
  * @author llean
  */
 public class IFrmTombolaAuto extends javax.swing.JInternalFrame {
+    private ControladorPrincipal controlador;
 
     /**
      * Creates new form IFrmTombolaAuto
      */
-    public IFrmTombolaAuto() {
+    public IFrmTombolaAuto(ControladorPrincipal controlador) {
+        this.controlador = controlador;
         initComponents();
     }
+    
+    private int numeroAnterior = 0;
+    
+    public void actualizarUltimoNumero(int numero) {
+        if (numeroAnterior > 0) {
+            lblSecundario.setText(String.valueOf(numeroAnterior));
+        }else{
+            numeroAnterior ++;
+            lblSecundario.setText("");
+        }
+
+        lblPrincipal.setText(String.valueOf(numero));
+
+        numeroAnterior = numero;
+
+        lblPrincipal.repaint();
+        lblSecundario.repaint();
+    }
+  
+    public void reiniciar() {
+        numeroAnterior = 0;
+        lblPrincipal.setText("");
+        lblSecundario.setText("");
+        btnIniciar.setEnabled(true);
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,47 +59,48 @@ public class IFrmTombolaAuto extends javax.swing.JInternalFrame {
 
         lblPrincipal = new javax.swing.JLabel();
         lblSecundario = new javax.swing.JLabel();
+        btnIniciar = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPrincipal.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         lblPrincipal.setForeground(new java.awt.Color(2, 76, 117));
         lblPrincipal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPrincipal.setText("20");
+        getContentPane().add(lblPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 360, 100));
 
         lblSecundario.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
         lblSecundario.setForeground(new java.awt.Color(2, 76, 117));
         lblSecundario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSecundario.setText("31");
+        getContentPane().add(lblSecundario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 360, 70));
+
+        btnIniciar.setText("jButton2");
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, -1, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/TombolaAuto.png"))); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(lblPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(lblSecundario, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(Fondo)
-        );
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        System.out.println("iniciar clickeado");
+        System.out.println("controlador " + (controlador != null ? "OK" : "NULL"));
+        controlador.getControladorPartida().iniciarModoAutomatico();
+        System.out.println("desabilitando boton");
+        btnIniciar.setEnabled(false);
+        System.out.println("boton desabilitado");
+    }//GEN-LAST:event_btnIniciarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JLabel lblPrincipal;
     private javax.swing.JLabel lblSecundario;
     // End of variables declaration//GEN-END:variables

@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import Controladores.ControladorPrincipal;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -17,11 +18,13 @@ import javax.swing.SwingConstants;
 public class IFrmTablero extends javax.swing.JInternalFrame {
 
     private JLabel[] labels;
+    private ControladorPrincipal controlador;
 
     /**
      * Creates new form IFrmTablero
      */
-    public IFrmTablero() {
+    public IFrmTablero(ControladorPrincipal controlador) {
+        this.controlador = controlador;
         initComponents();
         this.labels = new JLabel[76];
         inicializarTablero();
@@ -38,7 +41,8 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
 
         Matriz = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnReiniciar = new javax.swing.JButton();
+        btnDeshacer = new javax.swing.JButton();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -51,25 +55,44 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(11, 88, 132));
 
-        jButton1.setBackground(new java.awt.Color(214, 204, 179));
-        jButton1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(11, 88, 132));
-        jButton1.setText("Reiniciar");
+        btnReiniciar.setBackground(new java.awt.Color(214, 204, 179));
+        btnReiniciar.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnReiniciar.setForeground(new java.awt.Color(11, 88, 132));
+        btnReiniciar.setText("Reiniciar");
+        btnReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReiniciarActionPerformed(evt);
+            }
+        });
+
+        btnDeshacer.setText("jButton1");
+        btnDeshacer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeshacerActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(286, 286, 286)
-                .addComponent(jButton1)
+                .addGap(108, 108, 108)
+                .addComponent(btnDeshacer)
+                .addGap(103, 103, 103)
+                .addComponent(btnReiniciar)
                 .addContainerGap(328, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnReiniciar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(btnDeshacer)))
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
@@ -77,6 +100,15 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReiniciarActionPerformed
+       controlador.reiniciarJuego();
+        System.out.println(controlador.getGestorJuego().isJuegoIniciado());
+    }//GEN-LAST:event_btnReiniciarActionPerformed
+
+    private void btnDeshacerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeshacerActionPerformed
+        controlador.getControladorPartida().desmarcarUltimoNumero();
+    }//GEN-LAST:event_btnDeshacerActionPerformed
 
     private void inicializarTablero() {
         Matriz.removeAll();
@@ -103,6 +135,8 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
             label.setBackground(new Color(220, 197, 157));
             label.setForeground(new Color(11,88,132));
             label.setFont(new Font("Arial", Font.PLAIN, 36));
+            
+            label.repaint();
         }
     }
     
@@ -119,7 +153,8 @@ public class IFrmTablero extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Matriz;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnDeshacer;
+    private javax.swing.JButton btnReiniciar;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

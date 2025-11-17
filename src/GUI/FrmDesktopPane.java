@@ -58,6 +58,37 @@ public class FrmDesktopPane extends javax.swing.JFrame {
         vistaAdaptador.setFrameCartonManualActual(manualFrm);
     }
     
+    public void abrirFrameTablero() {
+        IFrmTablero tableroFrm = new IFrmTablero(controlador);
+        jDesktopPane1.add(tableroFrm);
+        tableroFrm.setVisible(true);
+        tableroFrm.setLocation(10,10);
+        vistaAdaptador.setFrameTablero(tableroFrm);
+    }
+    
+    public void abrirFrameTombolaAuto() {
+        IFrmTombolaAuto frameTombola = new IFrmTombolaAuto(controlador);
+        jDesktopPane1.add(frameTombola);
+        frameTombola.setLocation(10, 416);
+        frameTombola.setVisible(true);
+        
+        if (vistaAdaptador != null) {
+            vistaAdaptador.setFrameTombolaAuto(frameTombola);
+        }
+    }
+    
+    public void abrirFrameTombolaManual() {
+        IFrmTombolaManual frameTombola = new IFrmTombolaManual(controlador);
+        jDesktopPane1.add(frameTombola);
+        frameTombola.setLocation(10, 416);
+        frameTombola.setVisible(true);
+
+        if (vistaAdaptador != null) {
+            vistaAdaptador.setFrameTombolaManual(frameTombola);
+        }
+    }
+
+    
      private void centrarFrame(javax.swing.JInternalFrame frame) {
         int x = (jDesktopPane1.getWidth() - frame.getWidth()) / 2;
         int y = (jDesktopPane1.getHeight() - frame.getHeight()) / 2;
@@ -84,20 +115,72 @@ public class FrmDesktopPane extends javax.swing.JFrame {
             }
         }
 }
+    
+    public void marcarNumeroEnTodosLosCartones(int numero) {
+    for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+        if (frame instanceof IFrmCarton) {
+            IFrmCarton frameCarton = (IFrmCarton) frame;
+            frameCarton.marcarNumero(numero);
+        }
+    }
+}
+    
+    public void reiniciarTodosLosCartones() {
+    for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+        if (frame instanceof IFrmCarton) {
+            IFrmCarton frameCarton = (IFrmCarton) frame;
+            frameCarton.reiniciar();
+        }
+    }
+}
+    
+    public void actualizarTodosLosCartones() {
+    for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+        if (frame instanceof IFrmCarton) {
+            IFrmCarton frameCarton = (IFrmCarton) frame;
+            System.out.println("Actualizando caarton: "  + frameCarton.getCarton().getId());
+            frameCarton.actualizarMatriz();
+        }
+    }
+}
+    
+    public void resaltarCartonGanador(String idGanador) {
+    for (javax.swing.JInternalFrame frame : jDesktopPane1.getAllFrames()) {
+        if (frame instanceof IFrmCarton) {
+            IFrmCarton frameCarton = (IFrmCarton) frame;
+            if (frameCarton.getCarton().getId().equals(idGanador)) {
+                frameCarton.setTitle("🏆 GANADOR: " + idGanador + " 🏆");
+                frameCarton.toFront();
+                break;
+            }
+        }
+    }
+}
+    
+    
 
     private int offsetX = 0;
     private int offsetY = 0;
 
     private void posicionarEnCascada(javax.swing.JInternalFrame frame) {
-        frame.setLocation(offsetX, offsetY);
+        int xInicial = 1920 - 552 - 20;
+        int yInicial = 10;
+        
+        int x = xInicial + offsetX;
+        int y = yInicial + offsetY;
+        
+        frame.setLocation(x, y);
+        
         offsetX += 30;
         offsetY += 30;
-
-        if (offsetX > 400 || offsetY > 400) {
+        
+        if (offsetX > 300 || offsetY > 400) {
             offsetX = 0;
             offsetY = 0;
         }
     }
+    
+    
     
 
     /**

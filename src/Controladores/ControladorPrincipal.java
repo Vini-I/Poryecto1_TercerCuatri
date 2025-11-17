@@ -80,7 +80,8 @@ public class ControladorPrincipal implements ObservadorJuego {
         
         if (confirma) {
             gestor.reiniciarJuego();
-            
+            controladorPartida.reiniciarHistorial();
+            vista.reiniciarTombola();
             vista.reiniciarMarcasCartones();
             vista.reiniciarTablero();
             vista.habilitarConfiguracion(true);

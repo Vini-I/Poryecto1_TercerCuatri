@@ -7,7 +7,6 @@ package GUI;
 import Modelo.Carton;
 import Modelo.Jugadas.ModoJuego;
 import Modelo.ModoEntrada;
-import java.util.List;
 
 /**
  *
@@ -24,13 +23,15 @@ public interface IGui {
     void mostrarFrameTombolaManual();
     void cerrarFramesConfiguracion();
     void agregarFrameCarton(Carton carton);
-    void actualizarFrameCarton(Carton carton);
+    void actualizarCartones();
     void eliminarFrameCarton(String idCarton);
     void marcarNumeroEnCartones(int numero);
     void reiniciarMarcasCartones();
     void marcarNumeroEnTablero(int numero);
+    void desmarcarNumeroEnTablero(int numero);
     void reiniciarTablero();
-    void actualizarUltimoNumero(int numero);
+    void reiniciarTombola();
+    void actualizarUltimoNumeroTombola(int numero);
     void habilitarBotonIngresarManual(boolean habilitar);
     void habilitarBotonGenerarAuto(boolean habilitar);
     void habilitarConfiguracion(boolean habilitar);

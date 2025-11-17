@@ -40,9 +40,23 @@ public class ComandoMarcarNumero implements Comando {
 
     @Override
     public void deshacer() {
+        System.out.println("desmarcando numero " + numero);
         for (Carton carton : cartonesAfectados) {
+            System.out.println("desmarcando en carton: " + carton.getId());
             carton.desmarcarNumero(numero);
         }
+    }
+    
+    private boolean cartonTieneNumero(Carton carton, int numero) {
+        int[][] numeros = carton.getNumeros();
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (numeros[i][j] == numero) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public int getNumero() {

@@ -27,21 +27,26 @@ public class ControladorPartida implements ObservadorJuego {
         this.gestor = gestor;
         this.gestor.agregarObservador(this);
         this.historial = new HistorialComandos();
+        System.out.println("llamando inicializar timer");
         inicializarTimer();
+        System.out.println("constructor fin");
     }
     
     private void inicializarTimer() {
         int milisegundos = intervaloSegundos * 1000;
-        
+        System.out.println(" inicializando timer con intervalo " + milisegundos);
         timerAutomatico = new Timer(milisegundos, e -> {
+            System.out.println("timer iniciado");
             try {
                 procesarNumeroAutomatico();
             } catch (NumeroInvalidoExcepcion ex) {
-                ex.getMessage();
+                System.out.println("Error " +ex.getMessage());
+                ex.printStackTrace();
             }
         });
         
         timerAutomatico.setRepeats(true);
+        System.out.println("Time inicializado correctamente");
     }
     
 
@@ -52,17 +57,21 @@ public class ControladorPartida implements ObservadorJuego {
         }
         
         if (gestor.getModoEntrada() != ModoEntrada.AUTOMATICO) {
+            System.out.println("modo actual "+ gestor.getModoEntrada());
             vista.mostrarError("El juego no está en modo automático");
             return;
         }
         
         if (gestor.getCartonGanador() != null) {
+            System.out.println("hay ganador");
             vista.mostrarError("Ya hay un ganador");
             return;
         }
-        
+        System.out.println("sin ganador");
         timerAutomatico.start();
+        System.out.println("timer iniciado " + timerAutomatico.isRunning());
         vista.habilitarBotonGenerarAuto(false);
+        System.out.println("fin");
     }
 
     public void detenerModoAutomatico() {
@@ -73,20 +82,25 @@ public class ControladorPartida implements ObservadorJuego {
     private void procesarNumeroAutomatico() throws NumeroInvalidoExcepcion {
         try {
             if (gestor.getCartonGanador() != null) {
+                System.out.println("hay ganador detener timer");
                 detenerModoAutomatico();
                 return;
             }
             
             if (!gestor.hayNumerosDisponibles()) {
+                System.out.println("no hay mas numeros detener");
                 detenerModoAutomatico();
                 vista.mostrarMensaje("No quedan más números", "Fin del juego");
                 return;
             }
             
+            System.out.println("llamando a procesarSiguenteJugada");
             int numero = gestor.procesarSiguienteJugada();
+            System.out.println("Numero procesado " + numero);
             
             ComandoMarcarNumero comando = new ComandoMarcarNumero(numero, gestor.getCartones());
             historial.ejecutarComando(comando);
+            System.out.println("comando ejecutado");
             
         } catch (IllegalStateException e) {
             detenerModoAutomatico();
@@ -154,8 +168,11 @@ public class ControladorPartida implements ObservadorJuego {
         );
         
         if (confirma) {
+            System.out.println(historial.getCantidadComandos());
             historial.deshacer();
-            vista.mostrarMensaje("Número desmarcado", "Deshacer");
+            System.out.println(historial.getCantidadComandos());
+            vista.actualizarCartones();
+            vista.mostrarMensaje("Número desmarcado: " + gestor.getUltimoNumero(), "Deshacer");
         }
     }
 
@@ -177,12 +194,14 @@ public class ControladorPartida implements ObservadorJuego {
         switch (evento.getTipo()) {
             case "NUMERO_PROCESADO":
                 int numero = (Integer) evento.getDatos();
-                vista.actualizarUltimoNumero(numero);
+                vista.actualizarUltimoNumeroTombola(numero);
                 vista.marcarNumeroEnTablero(numero);
                 vista.marcarNumeroEnCartones(numero);
                 break;
                 
             case "NUMERO_DESMARCADO":
+                int numeroDesmarcado = (Integer) evento.getDatos();
+                vista.actualizarUltimoNumeroTombola(0);
                 break;
 
             case "GANADOR_ENCONTRADO":

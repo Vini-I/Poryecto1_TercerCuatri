@@ -8,10 +8,9 @@ import Controladores.ControladorPrincipal;
 import Modelo.Carton;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import javax.swing.event.InternalFrameAdapter;
 import javax.swing.event.InternalFrameEvent;
@@ -21,9 +20,11 @@ import javax.swing.event.InternalFrameEvent;
  * @author llean
  */
 public class IFrmCarton extends javax.swing.JInternalFrame {
+
     private Carton carton;
     private ControladorPrincipal controlador;
     private JLabel[][] labels;
+
     /**
      * Creates new form IFrmCarton
      */
@@ -36,10 +37,10 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
         configurarCerrar();
     }
 
-     private void llenarMatriz() {
+    private void llenarMatriz() {
         Matriz.removeAll();
         Matriz.setBackground(new Color(32, 101, 137));
-        
+
         int[][] numeros = getCarton().getNumeros();
         boolean[][] marcados = getCarton().getMarcados();
 
@@ -54,7 +55,7 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
         Matriz.revalidate();
         Matriz.repaint();
     }
-    
+
     private JLabel crearLabel(int fila, int col, int numero, boolean marcado) {
         JLabel label = new JLabel();
         label.setOpaque(true);
@@ -65,12 +66,12 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
         if (fila == 2 && col == 2) {
             label.setText("FREE");
             label.setFont(new Font("Arial", Font.PLAIN, 36));
-            label.setBackground(new Color(186,74,40));
-            label.setForeground(new Color(242,213,148));
+            label.setBackground(new Color(186, 74, 40));
+            label.setForeground(new Color(242, 213, 148));
         } else {
             label.setText(String.valueOf(numero));
             label.setFont(new Font("Arial", Font.PLAIN, 36));
-            
+
             if (marcado) {
                 label.setBackground(new Color(255, 193, 7));
             } else {
@@ -78,17 +79,17 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
             }
             label.setForeground(new Color(183, 71, 38));
         }
-        
+
         return label;
     }
-    
+
     public void actualizarMatriz() {
         boolean[][] marcados = getCarton().getMarcados();
-        
+
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
                 JLabel label = labels[i][j];
-                
+
                 if (i == 2 && j == 2) {
                     continue;
                 }
@@ -100,17 +101,23 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
                 }
             }
         }
-        
+
         Matriz.repaint();
     }
     
-    public void marcarNumero(int numero) {
-        getCarton().marcarNumero(numero);
-        
+    public void reiniciar() {
+    if (carton != null) {
         actualizarMatriz();
     }
-    
-    public Carton getCarton(){
+}
+
+    public void marcarNumero(int numero) {
+        getCarton().marcarNumero(numero);
+
+        actualizarMatriz();
+    }
+
+    public Carton getCarton() {
         return this.carton;
     }
 
@@ -122,9 +129,17 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
             }
         });
     }
-    
 
     public void cerrar() {
+
+        if (controlador.getGestorJuego().isJuegoIniciado()) {
+            JOptionPane.showMessageDialog(this,
+                    "No puede eliminar cartones durante el juego",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
                 "¿Desea eliminar el cartón " + carton.getId() + "?",
                 "Eliminar Cartón",
@@ -137,12 +152,6 @@ public class IFrmCarton extends javax.swing.JInternalFrame {
         }
         System.out.println(controlador.getGestorJuego().getCantidadCartones());
     }
-
-
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.

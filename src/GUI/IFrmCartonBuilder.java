@@ -40,7 +40,7 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
         btnAuto = new javax.swing.JButton();
         lblManual = new javax.swing.JLabel();
         lblCarton2 = new javax.swing.JLabel();
-        btnManual1 = new javax.swing.JButton();
+        btnIniciar = new javax.swing.JButton();
         btnManual = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(33, 101, 137));
@@ -83,17 +83,17 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
         lblCarton2.setText("Carton");
         jPanel1.add(lblCarton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 90, 150, -1));
 
-        btnManual1.setBackground(new java.awt.Color(232, 211, 164));
-        btnManual1.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
-        btnManual1.setForeground(new java.awt.Color(34, 101, 138));
-        btnManual1.setText("Empezar Partida");
-        btnManual1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(232, 211, 164), 1, true));
-        btnManual1.addActionListener(new java.awt.event.ActionListener() {
+        btnIniciar.setBackground(new java.awt.Color(232, 211, 164));
+        btnIniciar.setFont(new java.awt.Font("Arial", 0, 48)); // NOI18N
+        btnIniciar.setForeground(new java.awt.Color(34, 101, 138));
+        btnIniciar.setText("Empezar Partida");
+        btnIniciar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(232, 211, 164), 1, true));
+        btnIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManual1ActionPerformed(evt);
+                btnIniciarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnManual1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 430, 180));
+        jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 430, 180));
 
         btnManual.setBackground(new java.awt.Color(232, 211, 164));
         btnManual.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -129,10 +129,31 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
        controlador.getControladorCartones().abrirCreacionCartonManual();
     }//GEN-LAST:event_btnManualActionPerformed
 
-    private void btnManual1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManual1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnManual1ActionPerformed
+    private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
+        iniciarJuego();
+    }//GEN-LAST:event_btnIniciarActionPerformed
 
+    
+    private void iniciarJuego(){
+        
+        if (getCantidadCartones() == 0) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+            "Debe crear al menos un cartón antes de iniciar",
+            "Error",
+            javax.swing.JOptionPane.ERROR_MESSAGE);
+        return; 
+    }
+        
+        int respuesta = javax.swing.JOptionPane.showConfirmDialog(this,
+            "¿Desea iniciar el juego con " + getCantidadCartones() + " cartón(es)?",
+            "Iniciar Juego",
+            javax.swing.JOptionPane.YES_NO_OPTION);
+        
+        if (respuesta == javax.swing.JOptionPane.YES_OPTION) {
+            controlador.iniciarJuego();
+            cerrarFrame();
+        }
+    }
     public int getCantidadCartones(){
         int cantidad = controlador.getGestorJuego().getCantidadCartones();
         return cantidad;
@@ -145,8 +166,8 @@ public class IFrmCartonBuilder extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAuto;
+    private javax.swing.JButton btnIniciar;
     private javax.swing.JButton btnManual;
-    private javax.swing.JButton btnManual1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAuto;
     private javax.swing.JLabel lblCarton1;

@@ -17,6 +17,9 @@ public class VistaAdapter implements IGui {
     
     private FrmDesktopPane desktop;
     private IFrmCartonManual cartonManual;
+    private IFrmTablero tablero;
+    private IFrmTombolaAuto auto;
+    private IFrmTombolaManual manual;
 
     public VistaAdapter(FrmDesktopPane desktop) {
         this.desktop = desktop;
@@ -44,14 +47,17 @@ public class VistaAdapter implements IGui {
 
     @Override
     public void mostrarFrameTablero() {
+        desktop.abrirFrameTablero();
     }
 
     @Override
     public void mostrarFrameTombolaAutomatica() {
+        desktop.abrirFrameTombolaAuto();
     }
 
     @Override
     public void mostrarFrameTombolaManual() {
+        desktop.abrirFrameTombolaManual();
     }
 
     @Override
@@ -64,7 +70,9 @@ public class VistaAdapter implements IGui {
     }
 
     @Override
-    public void actualizarFrameCarton(Carton carton) {
+    public void actualizarCartones() {
+        System.out.println("actualizando todos los cartones");
+        desktop.actualizarTodosLosCartones();
     }
 
     @Override
@@ -74,23 +82,49 @@ public class VistaAdapter implements IGui {
 
     @Override
     public void marcarNumeroEnCartones(int numero) {
+        desktop.marcarNumeroEnTodosLosCartones(numero);
     }
 
     @Override
     public void reiniciarMarcasCartones() {
+        desktop.reiniciarTodosLosCartones();
     }
 
     @Override
     public void marcarNumeroEnTablero(int numero) {
+        tablero.marcarNumero(numero);
+    }
+    
+    @Override
+    public void desmarcarNumeroEnTablero(int numero){
+      
     }
 
     @Override
     public void reiniciarTablero() {
+        tablero.reiniciar();
     }
 
     @Override
-    public void actualizarUltimoNumero(int numero) {
+    public void reiniciarTombola() {
+        if (auto != null) {
+            auto.reiniciar();
+        }
+        if (manual != null) {
+            manual.reiniciar();
+        }
     }
+
+    @Override
+    public void actualizarUltimoNumeroTombola(int numero) {
+        if (auto != null) {
+            auto.actualizarUltimoNumero(numero);
+        }
+        if (manual != null) {
+            manual.actualizarUltimoNumero(numero);
+        }
+    }
+    
 
     @Override
     public void habilitarBotonIngresarManual(boolean habilitar) {
@@ -137,6 +171,17 @@ public class VistaAdapter implements IGui {
 
     @Override
     public void mostrarGanador(Carton carton, String tipoJugada) {
+         String mensaje = "🎉 ¡¡¡BINGO!!! 🎉\n\n" +
+                     "Ganador: " + carton.getId() + "\n" +
+                     "Tipo de jugada: " + tipoJugada + "\n\n" +
+                     "¡Felicidades!";
+    
+    javax.swing.JOptionPane.showMessageDialog(desktop,
+        mensaje,
+        "¡TENEMOS UN GANADOR!",
+        javax.swing.JOptionPane.INFORMATION_MESSAGE);
+    
+    desktop.resaltarCartonGanador(carton.getId());
     }
 
     @Override
@@ -144,7 +189,19 @@ public class VistaAdapter implements IGui {
         return cartonManual.obtenerMatriz();
     }
     
-       public void setFrameCartonManualActual(IFrmCartonManual frame) {
+    public void setFrameCartonManualActual(IFrmCartonManual frame) {
         this.cartonManual = frame;
+    }
+    
+    public void setFrameTablero(IFrmTablero frame) {
+        this.tablero = frame;
+    }
+    
+    public void setFrameTombolaAuto(IFrmTombolaAuto frame) {
+        this.auto = frame;
+    }
+    
+    public void setFrameTombolaManual(IFrmTombolaManual frame) {
+        this.manual = frame;
     }
 }
